@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Ubiq.XR;
 using Ubiq.Messaging; // new
