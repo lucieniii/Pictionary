@@ -70,8 +70,13 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# VSCode folder
-.vscode/
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
 # Ignore auto-generated XR because these are per-end user settings
 /Assets/XR/
@@ -80,3 +85,6 @@ crashlytics-build.properties
 Recordings/
 
 .vsconfig
+
+# Mac
+.DS_Store
