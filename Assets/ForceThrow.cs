@@ -21,7 +21,7 @@ public class ForceThrow : MonoBehaviour, IGraspable, IUseable // new
 
     public float ballThrowingForce =5f;
 
-    private bool holdingBall = false;
+    private bool throwBall = false;
 
     private struct Message
     {
@@ -62,14 +62,12 @@ public class ForceThrow : MonoBehaviour, IGraspable, IUseable // new
     {
         if (controller)
         {
-            holdingBall = true;
+            
             transform.position = controller.transform.position;
-            transform.rotation = controller.transform.rotation;
-            if (Input.GetMouseButtonDown(0)){
-                holdingBall = false;
-                ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * ballThrowingForce);
-            }
+            transform.rotation = controller.transform.rotation;              
+            
         }
+        ball.GetComponent<Rigidbody>().AddForce(playerCamera.transform.forward * ballThrowingForce);
 
     }
 
