@@ -1,16 +1,15 @@
 using UnityEngine;
 using Ubiq.XR;
-using Ubiq.Messaging;
+using Ubiq.Messaging; // new
 
-public class Pen : MonoBehaviour, IGraspable, IUseable // new
+public class Pen : MonoBehaviour, IGraspable
 {
-    private NetworkContext context;
-    private bool owner;
+    private NetworkContext context; // new
+    private bool owner; // new
     private Hand controller;
-    private Transform nib; // new
-    private Material drawingMaterial; // new
-    private GameObject currentDrawing; // new
 
+    // new
+    // 1. Define a message format. Let's us know what to expect on send and recv
     private struct Message
     {
         public Vector3 position;
@@ -23,25 +22,30 @@ public class Pen : MonoBehaviour, IGraspable, IUseable // new
         }
     }
 
+    // new
     private void Start()
     {
-        nib = transform.Find("Grip/Nib"); // new
+        // 2. Register the object with the network scene. This provides a
+        // NetworkID for the object and lets it get messages from remote users
         context = NetworkScene.Register(this);
-        var shader = Shader.Find("Particles/Standard Unlit"); // new
-        drawingMaterial = new Material(shader); // new
     }
 
+    // new
     public void ProcessMessage (ReferenceCountedSceneGraphMessage msg)
     {
+        // 3. Receive and use transform update messages from remote users
+        // Here we use them to update our current position
         var data = msg.FromJson<Message>();
         transform.position = data.position;
         transform.rotation = data.rotation;
     }
 
+    // new
     private void FixedUpdate()
     {
         if (owner)
         {
+            // 4. Send transform update messages if we are the current 'owner'
             context.SendJson(new Message(transform));
         }
     }
@@ -57,50 +61,19 @@ public class Pen : MonoBehaviour, IGraspable, IUseable // new
 
     void IGraspable.Grasp(Hand controller)
     {
-        owner = true;
+        // 5. Define ownership as 'who holds the item currently'
+        owner = true; // new
         this.controller = controller;
     }
 
     void IGraspable.Release(Hand controller)
     {
-        owner = false;
+        // As 5. above, define ownership as 'who holds the item currently'
+        owner = false; // new
         this.controller = null;
     }
 
-    // new
-    void IUseable.Use(Hand controller)
-    {
-        BeginDrawing();
-    }
-
-    // new
-    void IUseable.UnUse(Hand controller)
-    {
-        EndDrawing();
-    }
-
-    // new
-    private void BeginDrawing()
-    {
-        currentDrawing = new GameObject("Drawing");
-        var trail = currentDrawing.AddComponent<TrailRenderer>();
-        trail.time = Mathf.Infinity;
-        trail.material = drawingMaterial;
-        trail.startWidth = .05f;
-        trail.endWidth = .05f;
-        trail.minVertexDistance = .02f;
-
-        currentDrawing.transform.parent = nib.transform;
-        currentDrawing.transform.localPosition = Vector3.zero;
-        currentDrawing.transform.localRotation = Quaternion.identity;
-    }
-
-    // new
-    private void EndDrawing()
-    {
-        var trail = currentDrawing.GetComponent<TrailRenderer>();
-        currentDrawing.transform.parent = null;
-        currentDrawing.GetComponent<TrailRenderer>().emitting = false;
-        currentDrawing = null;
-    }
+     // Note about ownership: 'ownership' is just one way of designing this
+     // kind of script. It's sometimes a useful pattern, but has no special
+     // significance outside of this file or in Ubiq more generally.
 }
