@@ -88,3 +88,6 @@ Recordings/
 
 # Mac
 .DS_Store
+
+# Ignore builded APKs
+VRbuilds
