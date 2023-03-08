@@ -15,11 +15,11 @@ UCL Virtual Environment 2022
 
 1. Rule of the Game
 
-+ Number of Players: 6-8
++ Number of Players: 2-4
 
 + Communicate by speaking
 
-+ 1-2 players (?) draw the given word; 1 player judge the if the guess is correct; the rest guess the word by robocalls
++ 1-2 players (?) draw the given word; 1 player judge the if the guess is correct( or no judge at the start); the rest guess the word by robocalls
 
 + Steps:
 
@@ -62,10 +62,14 @@ UCL Virtual Environment 2022
 
 4. Recording function (?)
 
+
 + Record a game;
 
-+ Save a drawing.
++ Save a drawing;
 
++ move drawings by hand;
+
++ 3d eraser.
 
 ## Modules
 
