@@ -44,13 +44,15 @@ UCL Virtual Environment 2022
 
 + A room (Additional: change the scene);
 
-+ All of the players have there pannel, which can be called by a button;
++ All of the players have their pannel, which can be called by a button;
 
 + Additional: Change the apperance of players.
 
 3. Drawing
 
 + By hand or by the controllers?
+
++ Eraser and undo (redo);
 
 + Change the color;
 
@@ -64,4 +66,65 @@ UCL Virtual Environment 2022
 
 + Save a drawing.
 
+
+## Modules
+
+Priority high to low: (1) (2) (3) (4)
+
+Open Scene:
+
++ One room style (2)
+
+Panel:
+
++ Drawer: Word (1), color(2), 3D object (line, cube, sphere; cylinder) (3), countdown (2)
+
++ Player: keyboard (1), submit (1), countdown (2), (hint) (4)
+
++ Room owner: Start new round (2), End game (2)
+
+Drawing:
+
++ Test draw by Hand and controller (1)
+
++ Move objects (3)
+
++ Eraser (3) / Undo (Redo) (3)
+
++ Create line/cube/sphere (3)
+
+Guessing:
+
++ Random pick module (1)
+
++ Word repo. (1)
+
++ countdown module (2)
+
++ judge module (1)
+
++ Ranking module (3)
+
+Recording:
+
++ Save drawings (3)
+
++ Save game recording (3)
+
+Game procedure:
+
++ Create/Enter a room (1)
+
++ Owner: Side pannel-Start/End (2)
+
++ Start a round: (1)
+    + Random choose drawer
+    + Random choose a word 
+    + Players: show the panel, start countdown 
+    + end a round:
+        + countdown to 0;
+        + all the players guess out the word;
+    + end phase: calculate the points, clear the playground, save the drawing
+
++ End game: Calculate the total points and ranking, save the game (3)
 
