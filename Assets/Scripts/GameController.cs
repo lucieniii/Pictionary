@@ -63,7 +63,7 @@ namespace DrawAndGuess.Procedure
                 isGameOwner = true;
                 this.hasGameOwner = true;
             }
-            Debug.Log(context.Scene.CountConnectionNumber());
+            //Debug.Log(context.Scene.CountConnectionNumber());
         }
 
         // Call by game owner's panel
