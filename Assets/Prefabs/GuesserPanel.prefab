@@ -2989,7 +2989,7 @@ GameObject:
   - component: {fileID: 9065447622041973934}
   - component: {fileID: 723729866008541796}
   - component: {fileID: 4888362111507925226}
-  - component: {fileID: 5113775670418807939}
+  - component: {fileID: 5224480693385792924}
   m_Layer: 0
   m_Name: Next Button
   m_TagString: Untagged
@@ -3100,9 +3100,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5113775670418807939}
-        m_TargetAssemblyTypeName: Ubiq.Samples.TextEntry, Assembly-CSharp
-        m_MethodName: SetPureText
+      - m_Target: {fileID: 5224480693385792924}
+        m_TargetAssemblyTypeName: JudgeGuess, Assembly-CSharp
+        m_MethodName: SetJudgement
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 6564436631889646375}
@@ -3112,7 +3112,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5113775670418807939
+--- !u!114 &5224480693385792924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3121,13 +3121,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3643204273960381983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34442e33da4e9c8428e9e63fa6dcf0b7, type: 3}
+  m_Script: {fileID: 11500000, guid: d57c16f73af404fe2b89719d1c6908a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 4777597683193354043}
-  defaultText: 
-  defaultTextColor: {r: 1, g: 1, b: 1, a: 1}
-  entryTextColor: {r: 1, g: 1, b: 1, a: 1}
+  judgement: {fileID: 4777597683193354043}
 --- !u!1 &3710154004841468268
 GameObject:
   m_ObjectHideFlags: 0
@@ -4272,7 +4269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2509804}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
