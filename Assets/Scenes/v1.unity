@@ -1721,7 +1721,6 @@ GameObject:
   - component: {fileID: 760246964}
   - component: {fileID: 760246963}
   - component: {fileID: 760246962}
-  - component: {fileID: 760246965}
   m_Layer: 0
   m_Name: Start
   m_TagString: Untagged
@@ -1794,8 +1793,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 760246965}
-        m_TargetAssemblyTypeName: DrawAndGuess.Procedure.StartGame, Assembly-CSharp
+      - m_Target: {fileID: 2642065778944729524}
+        m_TargetAssemblyTypeName: DrawAndGuess.Procedure.GameController, Assembly-CSharp
         m_MethodName: PressStartButtom
         m_Mode: 1
         m_Arguments:
@@ -1844,22 +1843,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760246960}
   m_CullTransparentMesh: 0
---- !u!114 &760246965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 760246960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b60ca8dfbb0ee4e79bcd4186218c8af3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainPanel: {fileID: 2642065778944729523}
-  startGamePanel: {fileID: 1539279607}
-  othersPanel: {fileID: 1636233069}
-  gameOwnerPanel: {fileID: 1572049426}
 --- !u!1 &839757898
 GameObject:
   m_ObjectHideFlags: 0
@@ -25508,6 +25491,7 @@ GameObject:
   - component: {fileID: 2642065778944729517}
   - component: {fileID: 2642065778944729516}
   - component: {fileID: 2642065778944729523}
+  - component: {fileID: 2642065778944729524}
   m_Layer: 0
   m_Name: Main Panel
   m_TagString: Untagged
@@ -25561,6 +25545,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: {fileID: 2642065778676225655}
+--- !u!114 &2642065778944729524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642065778944729521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a88b45995e0f4fd6973e1d105755dbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainPanel: {fileID: 2642065778944729523}
+  startGamePanel: {fileID: 1539279607}
+  othersPanel: {fileID: 1636233069}
+  gameOwnerPanel: {fileID: 1572049426}
 --- !u!222 &2642065778981335700
 CanvasRenderer:
   m_ObjectHideFlags: 0
