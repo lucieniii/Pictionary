@@ -66,6 +66,11 @@ namespace Ubiq.Samples
             this.text.text += character;
         }
 
+        public void SetPureText (Text text)
+        {
+            this.text.text = text.text;
+        }
+
         public void SetText (string text, Color color, bool clearOnInput)
         {
             this.text.text = text;
