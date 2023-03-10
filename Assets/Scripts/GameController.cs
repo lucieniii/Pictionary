@@ -67,10 +67,13 @@ namespace DrawAndGuess.Procedure
                 this.hasGameOwner = true;
             }
             Debug.Log(roomClient.Peers);
+            int cnt = 0;
             foreach (var peer in roomClient.Peers)
             {
+                cnt += 1;
                 Debug.Log(peer);
             }
+            Debug.Log(cnt);
         }
 
         // Call by game owner's panel
