@@ -35,7 +35,8 @@ namespace DrawAndGuess.DrawAndGuess
         private void Start()
         {
             nib = transform.Find("Grip/Nib");
-            context = NetworkScene.Register(this);
+            context = NetworkScene.Register(this, NetworkScene.GenerateUniqueId());
+            Debug.Log(context.Id);
             // var shader = Shader.Find("Unlit/Color");
             // drawingMaterial = new Material(shader);
         }
