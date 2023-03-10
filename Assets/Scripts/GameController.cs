@@ -2,11 +2,14 @@ using UnityEngine;
 using Ubiq.XR;
 using Ubiq.Messaging;
 using Ubiq.Samples;
+using Ubiq.Rooms;
 
 namespace DrawAndGuess.Procedure
 {
     public class GameController : MonoBehaviour
     {
+        public RoomClient roomClient;
+
         private NetworkContext context;
         public static bool isGameOwner;
         public static int memberCount;
@@ -63,7 +66,11 @@ namespace DrawAndGuess.Procedure
                 isGameOwner = true;
                 this.hasGameOwner = true;
             }
-            //Debug.Log(context.Scene.CountConnectionNumber());
+            Debug.Log(roomClient.Peers);
+            foreach (var peer in roomClient.Peers)
+            {
+                Debug.Log(peer);
+            }
         }
 
         // Call by game owner's panel
