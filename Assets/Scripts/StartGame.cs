@@ -55,7 +55,7 @@ namespace DrawAndGuess.Procedure
         {
             if (!isGameOwner && !this.hasGameOwner) 
             {
-                context.SendJson(new Message(this.hasGameOwner));
+                context.SendJson(new Message(true));
                 mainPanel.SwitchPanel(this.gameOwnerPanel);
                 isGameOwner = true;
                 this.hasGameOwner = true;
