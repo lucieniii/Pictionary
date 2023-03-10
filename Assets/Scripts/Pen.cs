@@ -11,8 +11,9 @@ public class Pen : MonoBehaviour, IGraspable, IUseable
     private bool owner;
     private Hand controller;
     private Transform nib;
-    private Material drawingMaterial;
+    public Material drawingMaterial;
     private GameObject currentDrawing;
+    public Color color;
 
     // Amend message to also store current drawing state
     private struct Message
@@ -33,8 +34,8 @@ public class Pen : MonoBehaviour, IGraspable, IUseable
     {
         nib = transform.Find("Grip/Nib");
         context = NetworkScene.Register(this);
-        var shader = Shader.Find("Particles/Standard Unlit");
-        drawingMaterial = new Material(shader);
+        // var shader = Shader.Find("Unlit/Color");
+        // drawingMaterial = new Material(shader);
     }
 
     public void ProcessMessage (ReferenceCountedSceneGraphMessage msg)
@@ -106,7 +107,7 @@ public class Pen : MonoBehaviour, IGraspable, IUseable
         trail.minVertexDistance = .02f;
 
         currentDrawing.transform.parent = nib.transform;
-        currentDrawing.transform.localPosition = Vector3.zero;
+        currentDrawing.transform.localPosition = new Vector3(0.0f, 0.5f, 0.0f);
         currentDrawing.transform.localRotation = Quaternion.identity;
     }
 
