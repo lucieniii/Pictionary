@@ -9,6 +9,7 @@ namespace DrawAndGuess.Procedure
     {
         private NetworkContext context;
         public static bool isGameOwner;
+        public static int memberCount;
         private bool hasGameOwner;
         public PanelSwitcher mainPanel;
 
@@ -38,6 +39,7 @@ namespace DrawAndGuess.Procedure
             var data = msg.FromJson<Message>();
             if (data.haveOwner)
             {
+                memberCount += 1;
                 mainPanel.SwitchPanel(this.othersPanel);
                 isGameOwner = false;
                 this.hasGameOwner = true;
@@ -51,22 +53,25 @@ namespace DrawAndGuess.Procedure
             
         }
 
-        public void PressStartButtom()
+        public void PressStartButton()
         {
             if (!isGameOwner && !this.hasGameOwner) 
             {
+                memberCount = 1;
                 context.SendJson(new Message(true));
                 mainPanel.SwitchPanel(this.gameOwnerPanel);
                 isGameOwner = true;
                 this.hasGameOwner = true;
             }
+            Debug.Log(memberCount);
         }
 
         // Call by game owner's panel
-        public void PressEndButtom()
+        public void PressEndButton()
         {
             if (isGameOwner && this.hasGameOwner) 
             {
+                memberCount = 0;
                 isGameOwner = false;
                 this.hasGameOwner = false;
                 mainPanel.SwitchPanel(this.startGamePanel);
