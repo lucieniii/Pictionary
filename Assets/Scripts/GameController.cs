@@ -69,7 +69,7 @@ namespace DrawAndGuess.Procedure
             {
                 isGameOwner = false;
                 this.hasGameOwner = false;
-                mainPanel.SwitchPanel(this.gameOwnerPanel);
+                mainPanel.SwitchPanel(this.startGamePanel);
                 context.SendJson(new Message(this.hasGameOwner));
             }
         }
