@@ -24,14 +24,22 @@ namespace DrawAndGuess.Procedure
         public RoomClient roomClient;
 
         private NetworkContext context;
+
         public bool isGameOwner;
-        public int playerCount = 0;
+        public int playerNumber = 0;
+        public string[] playerUuids;
+        
+        public int artistNumber = 1; // Hard coded
+        public string[] artistUuids;
+
         public PanelSwitcher mainPanel;
 
         public GameObject startGamePanel;
         public GameObject othersPanel;
         public GameObject gameOwnerPanel;
         public GameObject rankPanel;
+        public GameObject artistPanel;
+        public GameObject guessPanel;
 
         // private int standByCount = 0;
 
@@ -39,11 +47,13 @@ namespace DrawAndGuess.Procedure
         {
             public GameStatus previousGameStatus;
             public GameStatus nextGameStatus;
+            public string[] artistUuids;
 
-            public Message(GameStatus previousGameStatus, GameStatus nextGameStatus)
+            public Message(GameStatus previousGameStatus, GameStatus nextGameStatus, string[] artistUuids)
             {
                 this.previousGameStatus = previousGameStatus;
                 this.nextGameStatus = nextGameStatus;
+                this.artistUuids = artistUuids;
             }
         }
 
@@ -57,22 +67,39 @@ namespace DrawAndGuess.Procedure
 
         public void CountPlayerNumber()
         {
-            //Debug.Log(roomClient.Peers);
-            this.playerCount = 1;
+            this.playerNumber = 1;
             foreach (var peer in roomClient.Peers)
             {
-                this.playerCount += 1;
-                Debug.Log("peer.uuid");
-                Debug.Log(peer.uuid);
+                this.playerNumber += 1;
             }
-            Debug.Log("me.uuid");
-            Debug.Log(roomClient.Me.uuid);
+            this.playerUuids = new string [this.playerNumber];
+            this.playerUuids[0] = roomClient.Me.uuid;
+            int i = 1;
+            foreach (var peer in roomClient.Peers)
+            {
+                this.playerUuids[i] = peer.uuid;
+                i += 1;
+            }
+            Debug.Log(this.playerUuids);
         }
 
         public void ChangeGameStatus(GameStatus previousGameStatus, GameStatus nextGameStatus)
         {
             this.previousGameStatus = previousGameStatus;
             this.currentGameStatus = nextGameStatus;
+        }
+
+        public bool isArtist()
+        {
+            string myUuid = roomClient.Me.uuid;
+            foreach (string uuid in this.artistUuids)
+            {
+                if (uuid == myUuid)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void ProcessMessage(ReferenceCountedSceneGraphMessage msg)
@@ -94,6 +121,18 @@ namespace DrawAndGuess.Procedure
                     this.isGameOwner = false;
                     mainPanel.SwitchPanel(this.rankPanel);
                 }
+                else if (data.nextGameStatus == GameStatus.RoundPickWordPhase)
+                {
+                    this.artistUuids = data.artistUuids;
+                    if (this.isArtist())
+                    {
+                        mainPanel.SwitchPanel(this.artistPanel);
+                    }
+                    else 
+                    {
+                        mainPanel.SwitchPanel(this.othersPanel);
+                    }
+                }
             }
             else if (data.previousGameStatus == GameStatus.GameEndPhase)
             {
@@ -111,7 +150,10 @@ namespace DrawAndGuess.Procedure
             if (!this.isGameOwner && currentGameStatus == GameStatus.GameStartPhase)
             {
                 this.ChangeGameStatus(GameStatus.GameStartPhase, GameStatus.RoundStartPhase);
-                context.SendJson(new Message(GameStatus.GameStartPhase, GameStatus.RoundStartPhase));
+                context.SendJson(new Message(
+                    GameStatus.GameStartPhase, 
+                    GameStatus.RoundStartPhase,
+                    this.artistUuids));
                 mainPanel.SwitchPanel(this.gameOwnerPanel);
                 this.isGameOwner = true;
                 this.CountPlayerNumber();
@@ -125,7 +167,10 @@ namespace DrawAndGuess.Procedure
                 this.isGameOwner = false;
                 mainPanel.SwitchPanel(this.rankPanel);
                 this.ChangeGameStatus(GameStatus.RoundStartPhase, GameStatus.GameEndPhase);
-                context.SendJson(new Message(GameStatus.RoundStartPhase, GameStatus.GameEndPhase));
+                context.SendJson(new Message(
+                    GameStatus.RoundStartPhase, 
+                    GameStatus.GameEndPhase,
+                    this.artistUuids));
             }
         }
 
@@ -135,12 +180,52 @@ namespace DrawAndGuess.Procedure
             {
                 mainPanel.SwitchPanel(this.startGamePanel);
                 this.ChangeGameStatus(GameStatus.GameEndPhase, GameStatus.GameStartPhase);
-                // context.SendJson(new Message(GameStatus.GameEndPhase, GameStatus.GameStartPhase));
             }
             else if (this.currentGameStatus == GameStatus.GameStartPhase)
             {
                 mainPanel.SwitchPanel(this.startGamePanel);
             }
+        }
+
+        // RoundStartPhase -> RoundPickWordPhase
+        public void PressNewRoundButton()
+        {
+            this.CountPlayerNumber();
+            this.artistUuids = new string[this.artistNumber];
+            this.artistNumber = this.artistNumber > this.playerNumber ? this.playerNumber : this.artistNumber;
+            for (int i = 0; i < this.artistNumber; i++) 
+            {
+                while (true)
+                {
+                    int r = Random.Range(0, this.artistNumber);
+                    bool selected = false;
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (this.playerUuids[r] == this.artistUuids[j])
+                        {
+                            selected = true;
+                        }
+                    }
+                    if (!selected) 
+                    {
+                        this.artistUuids[i] = this.playerUuids[r];
+                        break;
+                    }
+                }
+            }
+            if (this.isArtist())
+            {
+                mainPanel.SwitchPanel(this.artistPanel);
+            }
+            else 
+            {
+                mainPanel.SwitchPanel(this.othersPanel);
+            }
+            this.ChangeGameStatus(GameStatus.RoundStartPhase, GameStatus.RoundPickWordPhase);
+            context.SendJson(new Message(
+                GameStatus.RoundStartPhase, 
+                GameStatus.GameEndPhase,
+                this.artistUuids));
         }
     }
 }
