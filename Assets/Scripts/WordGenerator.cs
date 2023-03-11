@@ -10,7 +10,7 @@ namespace DrawAndGuess.Guess
         public static string word;
         public Text wordText;
         public static bool wordGenerated = false;
-        public static List<string> wordlist = new List<string>(){"apple","bike", "car","desk","computer"};
+        public List<string> wordlist = new List<string>(){"apple","bike", "car","desk","computer"};
 
         public static string GetWord()
         {
@@ -22,7 +22,7 @@ namespace DrawAndGuess.Guess
             return wordGenerated;
         }
 
-        public static int GetRandomSeed(int min = 0, int max = 100)
+        public static int GetRandomSeed(int min = 0, int max = 10000)
         {
             return Random.Range(min, max);
         }
