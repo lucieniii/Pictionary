@@ -9,12 +9,14 @@ namespace DrawAndGuess.Guess
     {
         public Text judgement;
 
+        public WordGenerator wordGenerator;
+
         public void SetJudgement(Text input)
         {
             if (input)
             {
-                bool wordGenerated = WordGenerator.wordGenerated;
-                string word = WordGenerator.word;
+                bool wordGenerated = wordGenerator.wordGenerated;
+                string word = wordGenerator.word;
                 if (wordGenerated) 
                 {
                     if (input.text.ToUpper() == word) 

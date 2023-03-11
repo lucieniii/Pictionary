@@ -18579,6 +18579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   judgement: {fileID: 2239081941815473827}
+  wordGenerator: {fileID: 0}
 --- !u!114 &1580513654994446759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28473,6 +28474,7 @@ MonoBehaviour:
   artistNumber: 1
   artistUuids: []
   mainPanel: {fileID: 2642065778944729523}
+  wordGenerator: {fileID: 8575930246701363969}
   startGamePanel: {fileID: 1539279607}
   othersPanel: {fileID: 1636233069}
   gameOwnerPanel: {fileID: 1572049426}
@@ -41036,21 +41038,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8575930246701363969}
-        m_TargetAssemblyTypeName: DrawAndGuess.Guess.WordGenerator, Assembly-CSharp
-        m_MethodName: GenerateWord
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8575930246701363969}
-        m_TargetAssemblyTypeName: DrawAndGuess.Guess.WordGenerator, Assembly-CSharp
-        m_MethodName: ShowWord
+      - m_Target: {fileID: 2642065778944729524}
+        m_TargetAssemblyTypeName: DrawAndGuess.Procedure.GameController, Assembly-CSharp
+        m_MethodName: PressPickWordButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -65640,13 +65630,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba6d18260a7554108a02010b3f090424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  word: 
   wordText: {fileID: 2743104713128286787}
-  wordlist:
-  - apple
-  - bike
-  - car
-  - desk
-  - computer
+  wordGenerated: 0
 --- !u!114 &8578005560439905311
 MonoBehaviour:
   m_ObjectHideFlags: 0

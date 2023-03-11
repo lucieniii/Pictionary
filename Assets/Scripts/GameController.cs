@@ -3,6 +3,7 @@ using Ubiq.XR;
 using Ubiq.Messaging;
 using Ubiq.Samples;
 using Ubiq.Rooms;
+using DrawAndGuess.Guess;
 
 namespace DrawAndGuess.Procedure
 {
@@ -33,6 +34,8 @@ namespace DrawAndGuess.Procedure
         public string[] artistUuids;
 
         public PanelSwitcher mainPanel;
+
+        public WordGenerator wordGenerator;
 
         public GameObject startGamePanel;
         public GameObject othersPanel;
@@ -134,6 +137,13 @@ namespace DrawAndGuess.Procedure
                     }
                 }
             }
+            else if (data.previousGameStatus == GameStatus.RoundPickWordPhase)
+            {
+                if (this.isArtist() && data.nextGameStatus == GameStatus.RoundPlayPhase)
+                {
+                    mainPanel.SwitchPanel(this.guessPanel);
+                }
+            }
             else if (data.previousGameStatus == GameStatus.GameEndPhase)
             {
                 if (data.nextGameStatus == GameStatus.GameStartPhase)
@@ -226,6 +236,21 @@ namespace DrawAndGuess.Procedure
                 GameStatus.RoundStartPhase, 
                 GameStatus.RoundPickWordPhase,
                 this.artistUuids));
+        }
+
+        public void PressPickWordButton()
+        {
+            if (this.isArtist() && this.currentGameStatus == GameStatus.RoundPickWordPhase)
+            {
+                wordGenerator.GenerateWord();
+                string word = wordGenerator.word;
+                wordGenerator.ShowWord();
+                this.ChangeGameStatus(GameStatus.RoundPickWordPhase, GameStatus.RoundPlayPhase);
+                context.SendJson(new Message(
+                    GameStatus.RoundPickWordPhase, 
+                    GameStatus.RoundPlayPhase,
+                    this.artistUuids));
+            }
         }
     }
 }

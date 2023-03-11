@@ -2,18 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Ubiq.Messaging;
 
 namespace DrawAndGuess.Guess
 {
     public class WordGenerator : MonoBehaviour
     {
-        public static string word;
+        public string word;
         public Text wordText;
-        public static bool wordGenerated = false;
+        public bool wordGenerated = false;
+        
+        private NetworkContext context;
         // = new List<string>();
         //List<string> wordlist;
 
-        public static string GetWord()
+        private void Start()
+        {
+            context = NetworkScene.Register(this);
+        }
+
+        private struct Message
+        {
+            public string word;
+            public bool wordGenerated;
+
+            public Message(string word, bool wordGenerated)
+            {
+                this.word = word;
+                this.wordGenerated = wordGenerated;
+            }
+        }
+
+        public void ProcessMessage(ReferenceCountedSceneGraphMessage msg)
+        {
+            var data = msg.FromJson<Message>();
+            this.word = data.word;
+            this.wordGenerated = data.wordGenerated;
+            this.ShowWord();
+        }
+
+        public string GetWord()
         {
             return word;
         }
@@ -22,7 +50,7 @@ namespace DrawAndGuess.Guess
             public List<string> wordlist;
         }
 
-        public static bool GetWordGenerated()
+        public bool GetWordGenerated()
         {
             return wordGenerated;
         }
