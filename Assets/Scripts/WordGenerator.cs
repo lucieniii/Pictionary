@@ -10,6 +10,7 @@ namespace DrawAndGuess.Guess
         public static string word;
         public Text wordText;
         public static bool wordGenerated = false;
+        public static List<string> wordlist = new List<string>(){"apple","bike", "car","desk","computer"};
 
         public static string GetWord()
         {
@@ -21,11 +22,19 @@ namespace DrawAndGuess.Guess
             return wordGenerated;
         }
 
+        public static int GetRandomSeed(int min = 0, int max = 100)
+        {
+            return Random.Range(min, max);
+        }
+
         public void GenerateWord()
         {
             if (!wordGenerated) 
             {
-                word = "APPLE";
+                int index = GetRandomSeed();
+                index = index % wordlist.Count;
+                Debug.Log(index);
+                word = wordlist[index];
                 wordGenerated = true;
             }
         }
