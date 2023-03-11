@@ -19169,20 +19169,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1575885402650881028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8057216887991881607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d57c16f73af404fe2b89719d1c6908a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  judgement: {fileID: 2239081941815473827}
-  wordGenerator: {fileID: 8575930246701363969}
 --- !u!114 &1580513654994446759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23117,7 +23103,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1575885402650881028}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: JudgeGuess, Assembly-CSharp
         m_MethodName: SetJudgement
         m_Mode: 2
@@ -29001,6 +28987,8 @@ GameObject:
   - component: {fileID: 2642065778944729516}
   - component: {fileID: 2642065778944729523}
   - component: {fileID: 2642065778944729524}
+  - component: {fileID: 2642065778944729526}
+  - component: {fileID: 2642065778944729525}
   m_Layer: 0
   m_Name: Main Panel
   m_TagString: Untagged
@@ -29077,13 +29065,42 @@ MonoBehaviour:
   artistNumber: 1
   artistUuids: []
   mainPanel: {fileID: 2642065778944729523}
-  wordGenerator: {fileID: 8575930246701363969}
+  wordGenerator: {fileID: 2642065778944729525}
   startGamePanel: {fileID: 1539279607}
   othersPanel: {fileID: 1636233069}
   gameOwnerPanel: {fileID: 1572049426}
   rankPanel: {fileID: 99471310}
   artistPanel: {fileID: 2685054624387496991}
   guessPanel: {fileID: 366026869961905379}
+--- !u!114 &2642065778944729525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642065778944729521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6d18260a7554108a02010b3f090424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  word: 
+  wordText: {fileID: 2743104713128286787}
+  wordGenerated: 0
+--- !u!114 &2642065778944729526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2642065778944729521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d57c16f73af404fe2b89719d1c6908a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  judgement: {fileID: 2239081941815473827}
+  wordGenerator: {fileID: 2642065778944729525}
 --- !u!222 &2642065778981335700
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -48989,7 +49006,6 @@ GameObject:
   - component: {fileID: 55758369584496074}
   - component: {fileID: 8575930246701363968}
   - component: {fileID: 4530080356011245966}
-  - component: {fileID: 8575930246701363969}
   m_Layer: 0
   m_Name: Next Button
   m_TagString: Untagged
@@ -61482,7 +61498,6 @@ GameObject:
   - component: {fileID: 2346743170473628982}
   - component: {fileID: 6292806949991390204}
   - component: {fileID: 2200375237495204210}
-  - component: {fileID: 1575885402650881028}
   m_Layer: 0
   m_Name: Next Button
   m_TagString: Untagged
@@ -66222,21 +66237,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8575930246701363969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5730731131099801467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba6d18260a7554108a02010b3f090424, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  word: 
-  wordText: {fileID: 2743104713128286787}
-  wordGenerated: 0
 --- !u!114 &8578005560439905311
 MonoBehaviour:
   m_ObjectHideFlags: 0
