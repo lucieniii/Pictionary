@@ -224,7 +224,7 @@ namespace DrawAndGuess.Procedure
             this.ChangeGameStatus(GameStatus.RoundStartPhase, GameStatus.RoundPickWordPhase);
             context.SendJson(new Message(
                 GameStatus.RoundStartPhase, 
-                GameStatus.GameEndPhase,
+                GameStatus.RoundPickWordPhase,
                 this.artistUuids));
         }
     }
