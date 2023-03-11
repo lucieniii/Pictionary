@@ -10,11 +10,16 @@ namespace DrawAndGuess.Guess
         public static string word;
         public Text wordText;
         public static bool wordGenerated = false;
-        public List<string> wordlist = new List<string>(){"apple","bike", "car","desk","computer"};
+        // = new List<string>();
+        //List<string> wordlist;
 
         public static string GetWord()
         {
             return word;
+        }
+
+        private class WordBox{
+            public List<string> wordlist;
         }
 
         public static bool GetWordGenerated()
@@ -28,13 +33,16 @@ namespace DrawAndGuess.Guess
         }
 
         public void GenerateWord()
-        {
+        {   
             if (!wordGenerated) 
             {
+                WordBox wordbox = LoadJson.LoadJsonFromFile<WordBox>();
                 int index = GetRandomSeed();
-                index = index % wordlist.Count;
-                Debug.Log(index);
-                word = wordlist[index];
+                Debug.Log(wordbox.wordlist.Count);
+                Debug.Log(wordbox.wordlist);
+                index = index % wordbox.wordlist.Count;
+                
+                word = wordbox.wordlist[index];
                 wordGenerated = true;
             }
         }
