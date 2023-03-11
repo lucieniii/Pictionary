@@ -197,7 +197,7 @@ namespace DrawAndGuess.Procedure
             {
                 while (true)
                 {
-                    int r = Random.Range(0, this.artistNumber);
+                    int r = Random.Range(0, this.playerNumber);
                     bool selected = false;
                     for (int j = 0; j < i; j++)
                     {
