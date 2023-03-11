@@ -62,8 +62,11 @@ namespace DrawAndGuess.Procedure
             foreach (var peer in roomClient.Peers)
             {
                 this.playerCount += 1;
+                Debug.Log("peer.uuid");
+                Debug.Log(peer.uuid);
             }
-            //Debug.Log(cnt);
+            Debug.Log("me.uuid");
+            Debug.Log(roomClient.Me.uuid);
         }
 
         public void ChangeGameStatus(GameStatus previousGameStatus, GameStatus nextGameStatus)
