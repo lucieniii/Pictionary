@@ -118,7 +118,7 @@ namespace DrawAndGuess.Procedure
             if (this.isGameOwner && currentGameStatus == GameStatus.RoundStartPhase) 
             {
                 this.isGameOwner = false;
-                mainPanel.SwitchPanel(this.startGamePanel);
+                mainPanel.SwitchPanel(this.rankPanel);
                 this.ChangeGameStatus(GameStatus.RoundStartPhase, GameStatus.GameEndPhase);
                 context.SendJson(new Message(GameStatus.RoundStartPhase, GameStatus.GameEndPhase));
             }
