@@ -64,13 +64,21 @@ namespace DrawAndGuess.Guess
         {   
             if (!wordGenerated) 
             {
-                WordBox wordbox = LoadJson.LoadJsonFromFile<WordBox>();
+                // WordBox wordbox = LoadJson.LoadJsonFromFile<WordBox>();
+                // int index = GetRandomSeed();
+                // Debug.Log(wordbox.wordlist.Count);
+                // Debug.Log(wordbox.wordlist);
+                // index = index % wordbox.wordlist.Count;               
+                // word = wordbox.wordlist[index];
+                // wordGenerated = true;
+                Debug.Log("here");
+                List<string> wordlist = new List<string>(){"apple","bike","car","desk","computer","horse","house","chair","bottle","glass","skateboard","rainbow","pen"};
                 int index = GetRandomSeed();
-                Debug.Log(wordbox.wordlist.Count);
-                Debug.Log(wordbox.wordlist);
-                index = index % wordbox.wordlist.Count;
+                Debug.Log(wordlist.Count);
+                Debug.Log(wordlist);
+                index = index % wordlist.Count;
                 
-                word = wordbox.wordlist[index];
+                word = wordlist[index];
                 wordGenerated = true;
             }
         }
