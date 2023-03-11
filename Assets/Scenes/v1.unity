@@ -28977,14 +28977,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousGameStatus: 0
   currentGameStatus: 0
+  roundStartTime: 0
   roomClient: {fileID: 2642065778582945161}
   isGameOwner: 0
   playerNumber: 0
   playerUuids: []
   artistNumber: 1
+  roundDuration: 120
   artistUuids: []
   mainPanel: {fileID: 2642065778944729523}
   wordGenerator: {fileID: 2642065778944729525}
+  judgeGuess: {fileID: 2642065778944729526}
   startGamePanel: {fileID: 1539279607}
   othersPanel: {fileID: 1636233069}
   gameOwnerPanel: {fileID: 1572049426}
@@ -29020,6 +29023,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   judgement: {fileID: 2239081941815473827}
   wordGenerator: {fileID: 2642065778944729525}
+  correctCount: 0
+  correctUuidRecord: []
+  correctTimeRecord: []
+  playerNumber: 0
 --- !u!222 &2642065778981335700
 CanvasRenderer:
   m_ObjectHideFlags: 0

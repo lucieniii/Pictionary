@@ -22,6 +22,8 @@ namespace DrawAndGuess.Procedure
         public GameStatus previousGameStatus;
         public GameStatus currentGameStatus;
 
+        public float roundStartTime;
+
         public RoomClient roomClient;
 
         private NetworkContext context;
@@ -31,11 +33,13 @@ namespace DrawAndGuess.Procedure
         public string[] playerUuids;
         
         public int artistNumber = 1; // Hard coded
+        public float roundDuration = 60.0f; // Hard coded (second)
         public string[] artistUuids;
 
         public PanelSwitcher mainPanel;
 
         public WordGenerator wordGenerator;
+        public JudgeGuess judgeGuess;
 
         public GameObject startGamePanel;
         public GameObject othersPanel;
@@ -83,7 +87,8 @@ namespace DrawAndGuess.Procedure
                 this.playerUuids[i] = peer.uuid;
                 i += 1;
             }
-            Debug.Log(this.playerUuids);
+            // Debug.Log(this.playerUuids);
+            this.judgeGuess.playerNumber = this.playerNumber;
         }
 
         public void ChangeGameStatus(GameStatus previousGameStatus, GameStatus nextGameStatus)
@@ -110,9 +115,9 @@ namespace DrawAndGuess.Procedure
             var data = msg.FromJson<Message>();
             if (data.previousGameStatus == GameStatus.GameStartPhase)
             {
-                this.CountPlayerNumber();
                 if (data.nextGameStatus == GameStatus.RoundStartPhase)
                 {
+                    this.CountPlayerNumber();
                     mainPanel.SwitchPanel(this.othersPanel);
                     this.isGameOwner = false;
                 }
@@ -121,7 +126,7 @@ namespace DrawAndGuess.Procedure
             {
                 if (data.nextGameStatus == GameStatus.GameEndPhase)
                 {
-                    this.isGameOwner = false;
+                    this.StepIntoGameEndPhase();
                     mainPanel.SwitchPanel(this.rankPanel);
                 }
                 else if (data.nextGameStatus == GameStatus.RoundPickWordPhase)
@@ -139,9 +144,13 @@ namespace DrawAndGuess.Procedure
             }
             else if (data.previousGameStatus == GameStatus.RoundPickWordPhase)
             {
-                if (!this.isArtist() && data.nextGameStatus == GameStatus.RoundPlayPhase)
+                if (data.nextGameStatus == GameStatus.RoundPlayPhase)
                 {
-                    mainPanel.SwitchPanel(this.guessPanel);
+                    this.roundStartTime = Time.time;
+                    if (!this.isArtist())
+                    {
+                        mainPanel.SwitchPanel(this.guessPanel);
+                    }
                 }
             }
             else if (data.previousGameStatus == GameStatus.GameEndPhase)
@@ -154,6 +163,19 @@ namespace DrawAndGuess.Procedure
             this.ChangeGameStatus(data.previousGameStatus, data.nextGameStatus);
             Debug.Log("Receive Message");
         }  
+
+        public void StepIntoRoundEndPhase()
+        {
+            wordGenerator.reset();
+            judgeGuess.reset();
+            this.ChangeGameStatus(GameStatus.RoundPlayPhase, GameStatus.RoundEndPhase);
+            mainPanel.SwitchPanel(this.rankPanel);
+        }
+
+        public void StepIntoGameEndPhase()
+        {
+            this.isGameOwner = false;
+        }
 
         public void PressStartButton()
         {
@@ -181,6 +203,7 @@ namespace DrawAndGuess.Procedure
                     GameStatus.RoundStartPhase, 
                     GameStatus.GameEndPhase,
                     this.artistUuids));
+                this.StepIntoGameEndPhase();
             }
         }
 
@@ -195,12 +218,17 @@ namespace DrawAndGuess.Procedure
             {
                 mainPanel.SwitchPanel(this.startGamePanel);
             }
+            else if (this.currentGameStatus == GameStatus.RoundEndPhase)
+            {
+                this.ChangeGameStatus(GameStatus.RoundEndPhase, GameStatus.RoundStartPhase);
+                mainPanel.SwitchPanel(this.gameOwnerPanel);
+            }
         }
 
         // RoundStartPhase -> RoundPickWordPhase
         public void PressNewRoundButton()
         {
-            this.CountPlayerNumber();
+            // this.CountPlayerNumber();
             this.artistUuids = new string[this.artistNumber];
             this.artistNumber = this.artistNumber > this.playerNumber ? this.playerNumber : this.artistNumber;
             // Debug.Log(artistNumber);
@@ -248,10 +276,28 @@ namespace DrawAndGuess.Procedure
                 string word = wordGenerator.word;
                 wordGenerator.ShowWord();
                 this.ChangeGameStatus(GameStatus.RoundPickWordPhase, GameStatus.RoundPlayPhase);
+                this.roundStartTime = Time.time;
                 context.SendJson(new Message(
                     GameStatus.RoundPickWordPhase, 
                     GameStatus.RoundPlayPhase,
                     this.artistUuids));
+            }
+        }
+
+        private void Update()
+        {
+            if (this.currentGameStatus == GameStatus.RoundPlayPhase)
+            {
+                if (Time.time >= this.roundStartTime + this.roundDuration)
+                {
+                    this.StepIntoRoundEndPhase();
+                    return;
+                }
+                if (this.judgeGuess.correctCount == this.playerNumber - this.artistNumber)
+                {
+                    this.StepIntoRoundEndPhase();
+                    return;
+                }
             }
         }
     }
