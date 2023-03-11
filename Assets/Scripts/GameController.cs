@@ -203,6 +203,8 @@ namespace DrawAndGuess.Procedure
             this.CountPlayerNumber();
             this.artistUuids = new string[this.artistNumber];
             this.artistNumber = this.artistNumber > this.playerNumber ? this.playerNumber : this.artistNumber;
+            // Debug.Log(artistNumber);
+            // Debug.Log(playerNumber);
             for (int i = 0; i < this.artistNumber; i++) 
             {
                 while (true)

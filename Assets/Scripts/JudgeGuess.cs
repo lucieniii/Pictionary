@@ -13,6 +13,8 @@ namespace DrawAndGuess.Guess
 
         public void SetJudgement(Text input)
         {
+            Debug.Log(wordGenerator.word);
+            Debug.Log(wordGenerator.wordGenerated);
             if (input)
             {
                 bool wordGenerated = wordGenerator.wordGenerated;

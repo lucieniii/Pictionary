@@ -19,6 +19,8 @@ namespace DrawAndGuess.Guess
         private void Start()
         {
             context = NetworkScene.Register(this);
+            Debug.Log("WordGenerator id");
+            Debug.Log(context.Id);
         }
 
         private struct Message
@@ -39,6 +41,7 @@ namespace DrawAndGuess.Guess
             this.word = data.word;
             this.wordGenerated = data.wordGenerated;
             this.ShowWord();
+            Debug.Log("Receive word");
         }
 
         public string GetWord()
@@ -81,7 +84,7 @@ namespace DrawAndGuess.Guess
                 this.word = wordlist[index];
                 this.wordGenerated = true;
 
-                context.SendJson(new Message(this.word, this.wordGenerated));
+                this.context.SendJson(new Message(this.word, this.wordGenerated));
             }
         }
 
