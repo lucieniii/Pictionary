@@ -33,6 +33,8 @@ namespace DrawAndGuess.Procedure
         public GameObject gameOwnerPanel;
         public GameObject rankPanel;
 
+        private int standByCount = 0;
+
         private struct Message
         {
             public GameStatus previousGameStatus;
@@ -130,7 +132,7 @@ namespace DrawAndGuess.Procedure
             {
                 mainPanel.SwitchPanel(this.startGamePanel);
                 this.ChangeGameStatus(GameStatus.GameEndPhase, GameStatus.GameStartPhase);
-                context.SendJson(new Message(GameStatus.GameEndPhase, GameStatus.GameStartPhase));
+                // context.SendJson(new Message(GameStatus.GameEndPhase, GameStatus.GameStartPhase));
             }
         }
     }
