@@ -21,7 +21,7 @@ namespace DrawAndGuess.Guess
                 string word = wordGenerator.word;
                 if (wordGenerated) 
                 {
-                    if (input.text.ToUpper() == word) 
+                    if (input.text.ToUpper() == word.ToUpper()) 
                     {
                         this.judgement.text = "CORRECT";
                     }
