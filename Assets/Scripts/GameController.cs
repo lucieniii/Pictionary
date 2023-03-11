@@ -80,18 +80,22 @@ namespace DrawAndGuess.Procedure
                     mainPanel.SwitchPanel(this.othersPanel);
                     this.isGameOwner = false;
                 }
-                else if (data.nextGameStatus == GameStatus.GameEndPhase)
+            } 
+            else if (data.previousGameStatus == GameStatus.RoundStartPhase)
+            {
+                if (data.nextGameStatus == GameStatus.GameEndPhase)
                 {
                     this.isGameOwner = false;
                     mainPanel.SwitchPanel(this.startGamePanel);
-                } else if (data.nextGameStatus == GameStatus.GameStartPhase)
+                } 
+                else if (data.nextGameStatus == GameStatus.GameStartPhase)
                 {
                     // Delete if GameEndPhase is done
                     this.isGameOwner = false;
                     mainPanel.SwitchPanel(this.startGamePanel);
                 }
             }
-            this.ChangeGameStatus(data.nextGameStatus, data.previousGameStatus);
+            this.ChangeGameStatus(data.previousGameStatus, data.nextGameStatus);
             Debug.Log("Receive Message");
         }  
 
