@@ -31,6 +31,7 @@ namespace DrawAndGuess.Procedure
         public GameObject startGamePanel;
         public GameObject othersPanel;
         public GameObject gameOwnerPanel;
+        public GameObject rankPanel;
 
         private struct Message
         {
@@ -86,12 +87,13 @@ namespace DrawAndGuess.Procedure
                 if (data.nextGameStatus == GameStatus.GameEndPhase)
                 {
                     this.isGameOwner = false;
-                    mainPanel.SwitchPanel(this.startGamePanel);
-                } 
-                else if (data.nextGameStatus == GameStatus.GameStartPhase)
+                    mainPanel.SwitchPanel(this.rankPanel);
+                }
+            }
+            else if (data.previousGameStatus == GameStatus.GameEndPhase)
+            {
+                if (data.nextGameStatus == GameStatus.GameStartPhase)
                 {
-                    // Delete if GameEndPhase is done
-                    this.isGameOwner = false;
                     mainPanel.SwitchPanel(this.startGamePanel);
                 }
             }
@@ -111,18 +113,23 @@ namespace DrawAndGuess.Procedure
             }
         }
 
-        // Call by game owner's panel
         public void PressEndButton()
         {
             if (this.isGameOwner && currentGameStatus == GameStatus.RoundStartPhase) 
             {
                 this.isGameOwner = false;
                 mainPanel.SwitchPanel(this.startGamePanel);
-                // Should be changed to if GameEndPhase is done
-                // this.ChangeGameStatus(GameStatus.RoundStartPhase, GameStatus.GameEndPhase);
-                // context.SendJson(new Message(GameStatus.RoundStartPhase, GameStatus.GameEndPhase));
-                this.ChangeGameStatus(GameStatus.RoundStartPhase, GameStatus.GameStartPhase);
-                context.SendJson(new Message(GameStatus.RoundStartPhase, GameStatus.GameStartPhase));
+                this.ChangeGameStatus(GameStatus.RoundStartPhase, GameStatus.GameEndPhase);
+                context.SendJson(new Message(GameStatus.RoundStartPhase, GameStatus.GameEndPhase));
+            }
+        }
+
+        public void PressRankOKButton()
+        {
+            if (this.currentGameStatus == GameStatus.GameEndPhase)
+            {
+                mainPanel.SwitchPanel(this.startGamePanel);
+                context.SendJson(new Message(GameStatus.GameEndPhase, GameStatus.GameStartPhase));
             }
         }
     }
