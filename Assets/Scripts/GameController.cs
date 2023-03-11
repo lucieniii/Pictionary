@@ -139,7 +139,7 @@ namespace DrawAndGuess.Procedure
             }
             else if (data.previousGameStatus == GameStatus.RoundPickWordPhase)
             {
-                if (this.isArtist() && data.nextGameStatus == GameStatus.RoundPlayPhase)
+                if (!this.isArtist() && data.nextGameStatus == GameStatus.RoundPlayPhase)
                 {
                     mainPanel.SwitchPanel(this.guessPanel);
                 }
