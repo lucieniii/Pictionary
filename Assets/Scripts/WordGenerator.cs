@@ -18,7 +18,7 @@ namespace DrawAndGuess.Guess
             return word;
         }
 
-        private class wordl{
+        private class WordBox{
             public List<string> wordlist;
         }
 
@@ -36,7 +36,7 @@ namespace DrawAndGuess.Guess
         {   
             if (!wordGenerated) 
             {
-                wordl wordbox = LoadJson.LoadJsonFromFile<wordl>();
+                WordBox wordbox = LoadJson.LoadJsonFromFile<WordBox>();
                 int index = GetRandomSeed();
                 Debug.Log(wordbox.wordlist.Count);
                 Debug.Log(wordbox.wordlist);
