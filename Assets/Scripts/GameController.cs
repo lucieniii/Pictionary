@@ -129,6 +129,7 @@ namespace DrawAndGuess.Procedure
             if (this.currentGameStatus == GameStatus.GameEndPhase)
             {
                 mainPanel.SwitchPanel(this.startGamePanel);
+                this.ChangeGameStatus(GameStatus.GameEndPhase, GameStatus.GameStartPhase);
                 context.SendJson(new Message(GameStatus.GameEndPhase, GameStatus.GameStartPhase));
             }
         }
