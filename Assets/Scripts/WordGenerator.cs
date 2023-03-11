@@ -43,7 +43,7 @@ namespace DrawAndGuess.Guess
 
         public string GetWord()
         {
-            return word;
+            return this.word;
         }
 
         private class WordBox{
@@ -62,7 +62,7 @@ namespace DrawAndGuess.Guess
 
         public void GenerateWord()
         {   
-            if (!wordGenerated) 
+            if (!this.wordGenerated) 
             {
                 // WordBox wordbox = LoadJson.LoadJsonFromFile<WordBox>();
                 // int index = GetRandomSeed();
@@ -78,14 +78,16 @@ namespace DrawAndGuess.Guess
                 Debug.Log(wordlist);
                 index = index % wordlist.Count;
                 
-                word = wordlist[index];
-                wordGenerated = true;
+                this.word = wordlist[index];
+                this.wordGenerated = true;
+
+                context.SendJson(new Message(this.word, this.wordGenerated));
             }
         }
 
         public void ShowWord()
         {
-            this.wordText.text = word;
+            this.wordText.text = this.word;
         }
     }
 }
