@@ -343,5 +343,48 @@ namespace DrawAndGuess.Procedure
                 }
             }
         }
+
+        public void SwitchToStagePanel()
+        {
+            switch (this.currentGameStatus)
+            {
+                case GameStatus.GameStartPhase:
+                    mainPanel.SwitchPanel(this.startGamePanel);
+                    break;
+                case GameStatus.RoundStartPhase:
+                    if (this.isGameOwner)
+                    {
+                        mainPanel.SwitchPanel(this.gameOwnerPanel);
+                    }
+                    else
+                    {
+                        mainPanel.SwitchPanel(this.othersPanel);
+                    }
+                    break;
+                case GameStatus.RoundPickWordPhase:
+                    if (this.isArtist())
+                    {
+                        mainPanel.SwitchPanel(this.artistPanel);
+                    }
+                    else
+                    {
+                        mainPanel.SwitchPanel(this.othersPanel);
+                    }
+                    break;
+                case GameStatus.RoundPlayPhase:
+                    if (this.isArtist())
+                    {
+                        mainPanel.SwitchPanel(this.artistPanel);
+                    }
+                    else
+                    {
+                        mainPanel.SwitchPanel(this.guessPanel);
+                    }
+                    break;
+                default:
+                    mainPanel.SwitchPanel(this.rankPanel);
+                    break;
+            }
+        }
     }
 }
