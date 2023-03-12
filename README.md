@@ -153,3 +153,5 @@ game入口切换到当前phase
 笔的owner唯一 done
 
 轮流artist
+
+avatar 和场景的碰撞
