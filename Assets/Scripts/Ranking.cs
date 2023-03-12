@@ -133,35 +133,79 @@ namespace DrawAndGuess.Procedure
             }
         }
 
+        public bool isArtist(string name, 
+            string[] playerUuids,
+            string[] playerNames,
+            string[] artistUuids,
+            int playerNumber,
+            int artistNumber)
+        {
+            Debug.Log("is artist");
+            Debug.Log(name);
+            Debug.Log(playerUuids);
+            Debug.Log(playerNames);
+            Debug.Log(artistUuids);
+            Debug.Log(playerNumber);
+            Debug.Log(artistNumber);
+            for (int i = 0; i < playerNumber; i++)
+            {
+                if (name == playerNames[i])
+                {
+                    Debug.Log(playerNames[i]);
+                    for (int j = 0; j < artistNumber; j++)
+                    {
+                        Debug.Log(playerUuids[i]);
+                        Debug.Log(artistUuids[j]);
+                        if (playerUuids[i] == artistUuids[j])
+                        {
+                            return true;
+                        }
+                    }
+                    break;
+                }
+            }
+            return false;
+        }
+
         public void updateRankingBoard(
             string[] correctNameRecord, 
             float[] correctTimeRecord, 
             float roundStartTime, 
             int playerNumber, 
-            int correctCount)
+            int correctCount,
+            string[] playerUuids,
+            string[] playerNames,
+            string[] artistUuids,
+            int artistNumber)
         {
-            Debug.Log(correctCount);
-            foreach (var s in correctNameRecord)
-            {
-                Debug.Log(s);
-            }
-            for (int i = 0; i < playerNumber; i++)
-            {
-                changesInt[i] = 0;
-                changes[i].text = "";
-            }
+            int artistScore = 0;
             for (int i = 0; i < playerNumber; i++)
             {
                 for (int j = 0; j < correctCount; j++)
                 {
-                    Debug.Log(correctNameRecord[j]);
-                    Debug.Log(namesString[i]); 
                     if (correctNameRecord[j] == namesString[i])
                     {
                         changesInt[i] = this.roundDuration - (int) (correctTimeRecord[j]);
                         scoresInt[i] += changesInt[i];
-                        Debug.Log(changesInt[i]);
+                        artistScore += changesInt[i];
                     }
+                }
+            }
+            Debug.Log(artistScore);
+            for (int i = 0; i < playerNumber; i++)
+            {
+                Debug.Log("Here");
+                if (isArtist(
+                        namesString[i],
+                        playerUuids, 
+                        playerNames,
+                        artistUuids,
+                        playerNumber,
+                        artistNumber))
+                {
+                    Debug.Log("Here!!!!");
+                    changesInt[i] = artistScore;
+                    scoresInt[i] += changesInt[i];
                 }
             }
         }

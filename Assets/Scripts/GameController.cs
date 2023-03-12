@@ -197,7 +197,11 @@ namespace DrawAndGuess.Procedure
                 judgeGuess.correctTimeRecord,
                 this.roundStartTime,
                 this.playerNumber,
-                judgeGuess.correctCount
+                judgeGuess.correctCount,
+                this.playerUuids,
+                this.playerNames,
+                this.artistUuids,
+                this.artistNumber
             );
             ranking.showRankingBoard(this.playerNumber);
             wordGenerator.reset();
