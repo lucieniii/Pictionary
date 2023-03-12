@@ -20,6 +20,7 @@ namespace DrawAndGuess.Guess
         public string[] correctNameRecord;
         public float[] correctTimeRecord;
         public int guesserNumber;
+        public float roundStartTime;
 
         public RoomClient roomClient;
         private NetworkContext context;
@@ -63,10 +64,10 @@ namespace DrawAndGuess.Guess
                     if (input.text.ToUpper() == word.ToUpper()) 
                     {
                         this.judgement.text = "CORRECT";
-                        float nt = Time.time;
+                        float ct = Time.time - roundStartTime;
                         context.SendJson(new Message(roomClient.Me["ubiq.samples.social.name"], nt));
                         this.correctNameRecord[this.correctCount] = roomClient.Me["ubiq.samples.social.name"];
-                        this.correctTimeRecord[this.correctCount] = nt;
+                        this.correctTimeRecord[this.correctCount] = ct;
                         this.correctCount += 1;
                         corrected = true;
                     }
