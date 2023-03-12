@@ -35,9 +35,9 @@ namespace DrawAndGuess.Procedure
         private Text[] changes;
         private Text[] scores;
 
-        private int[] scoresInt;
-        private int[] changesInt;
-        private string[] namesString;
+        public int[] scoresInt;
+        public int[] changesInt;
+        public string[] namesString;
 
         private int listLength;
 
@@ -80,6 +80,7 @@ namespace DrawAndGuess.Procedure
 
         public void initRankingBoard(int playerNumber, string[] playerNames)
         {
+            Debug.Log("init ranking board");
             this.constructTextArrays();
             for (int i = 0; i < playerNumber; i++)
             {

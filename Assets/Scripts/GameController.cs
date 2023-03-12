@@ -86,6 +86,7 @@ namespace DrawAndGuess.Procedure
                 this.playerNumber += 1;
             }
             this.playerUuids = new string [this.playerNumber];
+            this.playerNames = new string [this.playerNumber];
             this.playerUuids[0] = roomClient.Me.uuid;
             this.playerNames[0] = roomClient.Me["ubiq.samples.social.name"];
             int i = 1;
