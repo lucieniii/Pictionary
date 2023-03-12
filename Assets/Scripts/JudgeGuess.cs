@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ubiq.Messaging;
+using Ubiq.Rooms;
 
 namespace DrawAndGuess.Guess
 {
@@ -17,6 +18,7 @@ namespace DrawAndGuess.Guess
         public float[] correctTimeRecord;
         public int playerNumber;
 
+        public RoomClient roomClient;
         private NetworkContext context;
 
         private void Start()
@@ -55,6 +57,11 @@ namespace DrawAndGuess.Guess
                     if (input.text.ToUpper() == word.ToUpper()) 
                     {
                         this.judgement.text = "CORRECT";
+                        float nt = Time.time;
+                        context.SendJson(new Message(roomClient.Me.uuid, nt));
+                        this.correctUuidRecord[this.correctCount] = roomClient.Me.uuid;
+                        this.correctTimeRecord[this.correctCount] = nt;
+                        this.correctCount += 1;
                     }
                     else 
                     {
