@@ -140,18 +140,10 @@ namespace DrawAndGuess.Procedure
             int playerNumber,
             int artistNumber)
         {
-            Debug.Log("is artist");
-            Debug.Log(name);
-            Debug.Log(playerUuids);
-            Debug.Log(playerNames);
-            Debug.Log(artistUuids);
-            Debug.Log(playerNumber);
-            Debug.Log(artistNumber);
             for (int i = 0; i < playerNumber; i++)
             {
                 if (name == playerNames[i])
                 {
-                    Debug.Log(playerNames[i]);
                     for (int j = 0; j < artistNumber; j++)
                     {
                         Debug.Log(playerUuids[i]);
@@ -191,10 +183,9 @@ namespace DrawAndGuess.Procedure
                     }
                 }
             }
-            Debug.Log(artistScore);
+            artistScore /= playerNumber;
             for (int i = 0; i < playerNumber; i++)
             {
-                Debug.Log("Here");
                 if (isArtist(
                         namesString[i],
                         playerUuids, 
@@ -203,7 +194,6 @@ namespace DrawAndGuess.Procedure
                         playerNumber,
                         artistNumber))
                 {
-                    Debug.Log("Here!!!!");
                     changesInt[i] = artistScore;
                     scoresInt[i] += changesInt[i];
                 }
