@@ -64,7 +64,7 @@ namespace DrawAndGuess.Guess
                     if (input.text.ToUpper() == word.ToUpper()) 
                     {
                         this.judgement.text = "CORRECT";
-                        float ct = Time.time - roundStartTime;
+                        float ct = Time.time - this.roundStartTime;
                         context.SendJson(new Message(roomClient.Me["ubiq.samples.social.name"], ct));
                         this.correctNameRecord[this.correctCount] = roomClient.Me["ubiq.samples.social.name"];
                         this.correctTimeRecord[this.correctCount] = ct;
