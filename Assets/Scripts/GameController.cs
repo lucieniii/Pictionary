@@ -36,6 +36,7 @@ namespace DrawAndGuess.Procedure
         public int artistNumber = 1; // Hard coded
         public float roundDuration; // Hard coded (second)
         public string[] artistUuids;
+        public int roundCounter;
 
         public PanelSwitcher mainPanel;
 
@@ -72,6 +73,7 @@ namespace DrawAndGuess.Procedure
             currentGameStatus = GameStatus.GameStartPhase;
             this.isGameOwner = false;
             this.roundDuration = 120.0f;
+            this.roundCounter = 0;
         }
 
         public void CountPlayerNumber()
@@ -263,8 +265,6 @@ namespace DrawAndGuess.Procedure
             this.artistNumber = this.artistNumber > this.playerNumber ? this.playerNumber : this.artistNumber;
             // Debug.Log(artistNumber);
             // Debug.Log(playerNumber);
-            
-            static int roundCounter = 0;
 
             if (this.artistNumber == 1) 
             {
