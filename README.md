@@ -143,6 +143,7 @@ TBD:
 game入口切换到当前phase done
 
 美化UI (panel,button，clicksound)
+button背景，Panel统一背景
 
 房间场景
 
