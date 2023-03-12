@@ -155,7 +155,7 @@ namespace DrawAndGuess.Procedure
                     Debug.Log(namesString[i]); 
                     if (correctNameRecord[j] == namesString[i])
                     {
-                        changesInt[i] = (int) (correctTimeRecord[j] - roundStartTime);
+                        changesInt[i] = (int) (correctTimeRecord[j]);
                         scoresInt[i] += changesInt[i];
                         Debug.Log(changesInt[i]);
                     }
