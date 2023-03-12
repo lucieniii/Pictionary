@@ -70,7 +70,7 @@ namespace DrawAndGuess.Procedure
             previousGameStatus = GameStatus.GameStartPhase;
             currentGameStatus = GameStatus.GameStartPhase;
             this.isGameOwner = false;
-            this.roundDuration = 60.0f;
+            this.roundDuration = 30.0f;
         }
 
         public void CountPlayerNumber()
@@ -224,13 +224,25 @@ namespace DrawAndGuess.Procedure
             else if (this.currentGameStatus == GameStatus.RoundEndPhase)
             {
                 this.ChangeGameStatus(GameStatus.RoundEndPhase, GameStatus.RoundStartPhase);
-                mainPanel.SwitchPanel(this.gameOwnerPanel);
+                if (this.isGameOwner)
+                {
+                    mainPanel.SwitchPanel(this.gameOwnerPanel);
+                }
+                else
+                {
+                    mainPanel.SwitchPanel(this.othersPanel);
+                }
+                
             }
         }
 
         // RoundStartPhase -> RoundPickWordPhase
         public void PressNewRoundButton()
         {
+            if (!this.isGameOwner)
+            {
+                return;
+            }
             // this.CountPlayerNumber();
             this.artistUuids = new string[this.artistNumber];
             this.artistNumber = this.artistNumber > this.playerNumber ? this.playerNumber : this.artistNumber;
