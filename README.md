@@ -136,7 +136,7 @@ TBD:
 
 延迟半秒进rank
 
-积分系统raank
+积分系统rank
 
 显示正确答案
 
@@ -148,7 +148,7 @@ game入口切换到当前phase
 
 保存画作
 
-每轮round之后笔归位 dones
+每轮round之后笔归位 done
 
 笔的owner唯一 done
 
