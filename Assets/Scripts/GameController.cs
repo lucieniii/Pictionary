@@ -167,10 +167,24 @@ namespace DrawAndGuess.Procedure
             Debug.Log("Receive Message");
         }  
 
+        public void DeleteDrawings()
+        {
+            GameObject[] obj = FindObjectsOfType(typeof(GameObject)) as GameObject[];
+            foreach (GameObject child in obj)
+            {
+                if (child.gameObject.name == "Drawing")
+                {
+                    child.gameObject.SetActive(false);
+                    Destroy(child.gameObject);
+                }
+            }
+        }
+
         public void StepIntoRoundEndPhase()
         {
             wordGenerator.reset();
             judgeGuess.reset();
+            this.DeleteDrawings();
             this.ChangeGameStatus(GameStatus.RoundPlayPhase, GameStatus.RoundEndPhase);
             mainPanel.SwitchPanel(this.rankPanel);
         }
