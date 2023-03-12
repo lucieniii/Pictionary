@@ -135,15 +135,21 @@ Game procedure:
 TBD:
 
 延迟半秒进rank
+
 积分系统raank
+
 显示正确答案
+
 game入口切换到当前phase
 
-美化UI （panel,button，clicksound   )
+美化UI (panel,button，clicksound)
+
 房间场景
+
 保存画作
 
-每轮round之后笔归位
+每轮round之后笔归位 dones
 
-笔的owner唯一
+笔的owner唯一 done
+
 轮流artist
