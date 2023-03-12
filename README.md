@@ -140,7 +140,7 @@ TBD:
 
 显示正确答案
 
-game入口切换到当前phase
+game入口切换到当前phase done
 
 美化UI (panel,button，clicksound)
 
