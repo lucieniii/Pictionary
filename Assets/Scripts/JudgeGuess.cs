@@ -17,7 +17,7 @@ namespace DrawAndGuess.Guess
         public bool corrected;
 
         public int correctCount;
-        public string[] correctUuidRecord;
+        public string[] correctNameRecord;
         public float[] correctTimeRecord;
         public int guesserNumber;
 
@@ -29,6 +29,7 @@ namespace DrawAndGuess.Guess
             context = NetworkScene.Register(this);
             this.corrected = false;
             this.correctCount = 0;
+            // Debug.Log(roomClient.Me["ubiq.samples.social.name"]);
         }
 
         private struct Message
@@ -46,7 +47,7 @@ namespace DrawAndGuess.Guess
         public void ProcessMessage(ReferenceCountedSceneGraphMessage msg)
         {
             var data = msg.FromJson<Message>();
-            this.correctUuidRecord[this.correctCount] = data.uuid;
+            this.correctNameRecord[this.correctCount] = data.uuid;
             this.correctTimeRecord[this.correctCount] = data.correctTime;
             this.correctCount += 1;
         }
@@ -64,7 +65,7 @@ namespace DrawAndGuess.Guess
                         this.judgement.text = "CORRECT";
                         float nt = Time.time;
                         context.SendJson(new Message(roomClient.Me.uuid, nt));
-                        this.correctUuidRecord[this.correctCount] = roomClient.Me.uuid;
+                        this.correctNameRecord[this.correctCount] = roomClient.Me["ubiq.samples.social.name"];
                         this.correctTimeRecord[this.correctCount] = nt;
                         this.correctCount += 1;
                         corrected = true;

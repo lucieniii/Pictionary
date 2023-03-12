@@ -32,6 +32,7 @@ namespace DrawAndGuess.Procedure
         public bool isGameOwner;
         public int playerNumber;
         public string[] playerUuids;
+        public string[] playerNames;
         
         public int artistNumber = 1; // Hard coded
         public float roundDuration; // Hard coded (second)
@@ -42,6 +43,7 @@ namespace DrawAndGuess.Procedure
 
         public WordGenerator wordGenerator;
         public JudgeGuess judgeGuess;
+        public Ranking ranking;
 
         public GameObject startGamePanel;
         public GameObject othersPanel;
@@ -85,16 +87,18 @@ namespace DrawAndGuess.Procedure
             }
             this.playerUuids = new string [this.playerNumber];
             this.playerUuids[0] = roomClient.Me.uuid;
+            this.playerNames[0] = roomClient.Me["ubiq.samples.social.name"];
             int i = 1;
             foreach (var peer in roomClient.Peers)
             {
                 this.playerUuids[i] = peer.uuid;
+                this.playerNames[i] = peer["ubiq.samples.social.name"];
                 i += 1;
             }
             // Debug.Log(this.playerUuids);
             this.judgeGuess.guesserNumber = this.playerNumber - this.artistNumber;
             this.judgeGuess.correctTimeRecord = new float[this.judgeGuess.guesserNumber];
-            this.judgeGuess.correctUuidRecord = new string[this.judgeGuess.guesserNumber];
+            this.judgeGuess.correctNameRecord = new string[this.judgeGuess.guesserNumber];
         }
 
         public void ChangeGameStatus(GameStatus previousGameStatus, GameStatus nextGameStatus)
@@ -124,6 +128,7 @@ namespace DrawAndGuess.Procedure
                 if (data.nextGameStatus == GameStatus.RoundStartPhase)
                 {
                     this.CountPlayerNumber();
+                    ranking.initRankingBoard(this.playerNumber, this.playerNames);
                     mainPanel.SwitchPanel(this.othersPanel);
                     this.isGameOwner = false;
                 }
@@ -189,6 +194,14 @@ namespace DrawAndGuess.Procedure
             judgeGuess.reset();
             this.DeleteDrawings();
             this.ChangeGameStatus(GameStatus.RoundPlayPhase, GameStatus.RoundEndPhase);
+            ranking.updateRankingBoard(
+                judgeGuess.correctNameRecord,
+                judgeGuess.correctTimeRecord,
+                this.roundStartTime,
+                this.playerNumber,
+                judgeGuess.correctCount
+            );
+            ranking.showRankingBoard(this.playerNumber);
             mainPanel.SwitchPanel(this.rankPanel);
         }
 
@@ -209,6 +222,7 @@ namespace DrawAndGuess.Procedure
                 mainPanel.SwitchPanel(this.gameOwnerPanel);
                 this.isGameOwner = true;
                 this.CountPlayerNumber();
+                ranking.initRankingBoard(this.playerNumber, this.playerNames);
             }
         }
 
