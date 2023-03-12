@@ -10,6 +10,7 @@ namespace DrawAndGuess.Guess
     public class JudgeGuess : MonoBehaviour
     {
         public Text judgement;
+        public Text inputText;
 
         public WordGenerator wordGenerator;
 
@@ -80,10 +81,11 @@ namespace DrawAndGuess.Guess
                 }
             }
         }
-
+        
         public void reset()
         {
             this.judgement.text = "";
+            this.inputText.text = "";
             this.correctCount = 0;
             this.corrected = false;
         }

@@ -30255,6 +30255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   judgement: {fileID: 2239081941815473827}
+  inputText: {fileID: 452100181425861311}
   wordGenerator: {fileID: 2642065778944729525}
   corrected: 0
   correctCount: 0
