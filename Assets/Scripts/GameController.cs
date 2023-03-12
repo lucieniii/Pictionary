@@ -29,11 +29,11 @@ namespace DrawAndGuess.Procedure
         private NetworkContext context;
 
         public bool isGameOwner;
-        public int playerNumber = 0;
+        public int playerNumber;
         public string[] playerUuids;
         
         public int artistNumber = 1; // Hard coded
-        public float roundDuration = 60.0f; // Hard coded (second)
+        public float roundDuration; // Hard coded (second)
         public string[] artistUuids;
 
         public PanelSwitcher mainPanel;
@@ -70,6 +70,7 @@ namespace DrawAndGuess.Procedure
             previousGameStatus = GameStatus.GameStartPhase;
             currentGameStatus = GameStatus.GameStartPhase;
             this.isGameOwner = false;
+            this.roundDuration = 60.0f;
         }
 
         public void CountPlayerNumber()
@@ -88,7 +89,9 @@ namespace DrawAndGuess.Procedure
                 i += 1;
             }
             // Debug.Log(this.playerUuids);
-            this.judgeGuess.playerNumber = this.playerNumber;
+            this.judgeGuess.guesserNumber = this.playerNumber - this.artistNumber;
+            this.judgeGuess.correctTimeRecord = new float[this.judgeGuess.guesserNumber];
+            this.judgeGuess.correctUuidRecord = new string[this.judgeGuess.guesserNumber];
         }
 
         public void ChangeGameStatus(GameStatus previousGameStatus, GameStatus nextGameStatus)
