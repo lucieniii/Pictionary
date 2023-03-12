@@ -137,6 +137,11 @@ namespace DrawAndGuess.Procedure
             int playerNumber, 
             int correctCount)
         {
+            Debug.Log(correctNameRecord);
+            foreach (var s in correctNameRecord)
+            {
+                Debug.Log(s);
+            }
             for (int i = 0; i < playerNumber; i++)
             {
                 changesInt[i] = 0;
