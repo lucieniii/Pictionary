@@ -91,3 +91,7 @@ Recordings/
 
 # Ignore builded APKs
 VRbuilds
+
+# Ignore personal editor settings
+ProjectSettings/ProjectSettings.asset
+ProjectSettings/EditorBuildSettings.asset
