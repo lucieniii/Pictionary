@@ -65,7 +65,7 @@ namespace DrawAndGuess.Guess
                     {
                         this.judgement.text = "CORRECT";
                         float ct = Time.time - roundStartTime;
-                        context.SendJson(new Message(roomClient.Me["ubiq.samples.social.name"], nt));
+                        context.SendJson(new Message(roomClient.Me["ubiq.samples.social.name"], ct));
                         this.correctNameRecord[this.correctCount] = roomClient.Me["ubiq.samples.social.name"];
                         this.correctTimeRecord[this.correctCount] = ct;
                         this.correctCount += 1;

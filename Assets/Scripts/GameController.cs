@@ -159,7 +159,7 @@ namespace DrawAndGuess.Procedure
                 if (data.nextGameStatus == GameStatus.RoundPlayPhase)
                 {
                     this.roundStartTime = Time.time;
-                    ranking.roundStartTime = this.roundStartTime;
+                    judgeGuess.roundStartTime = this.roundStartTime;
                     if (!this.isArtist())
                     {
                         mainPanel.SwitchPanel(this.guessPanel);
@@ -347,7 +347,7 @@ namespace DrawAndGuess.Procedure
                 wordGenerator.ShowWord();
                 this.ChangeGameStatus(GameStatus.RoundPickWordPhase, GameStatus.RoundPlayPhase);
                 this.roundStartTime = Time.time;
-                ranking.roundStartTime = this.roundStartTime;
+                judgeGuess.roundStartTime = this.roundStartTime;
                 context.SendJson(new Message(
                     GameStatus.RoundPickWordPhase, 
                     GameStatus.RoundPlayPhase,
