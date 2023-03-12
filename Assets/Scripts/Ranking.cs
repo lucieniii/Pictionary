@@ -39,6 +39,8 @@ namespace DrawAndGuess.Procedure
         public int[] changesInt;
         public string[] namesString;
 
+        public int roundDuration = 120;
+
         private int listLength;
 
         private void constructTextArrays()
@@ -76,6 +78,7 @@ namespace DrawAndGuess.Procedure
         private void Start()
         {
             this.listLength = 7;
+            this.roundDuration = 120;
         }
 
         public void initRankingBoard(int playerNumber, string[] playerNames)
@@ -155,7 +158,7 @@ namespace DrawAndGuess.Procedure
                     Debug.Log(namesString[i]); 
                     if (correctNameRecord[j] == namesString[i])
                     {
-                        changesInt[i] = (int) (correctTimeRecord[j]);
+                        changesInt[i] = this.roundDuration - (int) (correctTimeRecord[j]);
                         scoresInt[i] += changesInt[i];
                         Debug.Log(changesInt[i]);
                     }
