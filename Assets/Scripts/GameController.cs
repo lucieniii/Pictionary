@@ -266,6 +266,17 @@ namespace DrawAndGuess.Procedure
                 }
                 
             }
+            else if (this.currentGameStatus == GameStatus.RoundStartPhase)
+            {
+                if (this.isGameOwner)
+                {
+                    mainPanel.SwitchPanel(this.gameOwnerPanel);
+                }
+                else
+                {
+                    mainPanel.SwitchPanel(this.othersPanel);
+                }
+            }
         }
 
         // RoundStartPhase -> RoundPickWordPhase
