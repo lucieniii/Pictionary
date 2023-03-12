@@ -15,7 +15,7 @@ namespace DrawAndGuess.Guess
 
         public bool corrected;
 
-        public int correctCount = 0;
+        public int correctCount;
         public string[] correctUuidRecord;
         public float[] correctTimeRecord;
         public int guesserNumber;
@@ -27,6 +27,7 @@ namespace DrawAndGuess.Guess
         {
             context = NetworkScene.Register(this);
             this.corrected = false;
+            this.correctCount = 0;
         }
 
         private struct Message
@@ -51,7 +52,7 @@ namespace DrawAndGuess.Guess
 
         public void SetJudgement(Text input)
         {
-            if (input)
+            if (input && !corrected)
             {
                 bool wordGenerated = wordGenerator.wordGenerated;
                 string word = wordGenerator.word;
@@ -65,6 +66,7 @@ namespace DrawAndGuess.Guess
                         this.correctUuidRecord[this.correctCount] = roomClient.Me.uuid;
                         this.correctTimeRecord[this.correctCount] = nt;
                         this.correctCount += 1;
+                        corrected = true;
                     }
                     else 
                     {

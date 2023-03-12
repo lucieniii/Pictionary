@@ -10,7 +10,7 @@ namespace DrawAndGuess.Guess
     {
         public string word;
         public Text wordText;
-        public bool wordGenerated = false;
+        public bool wordGenerated;
         
         private NetworkContext context;
         // = new List<string>();
@@ -19,6 +19,7 @@ namespace DrawAndGuess.Guess
         private void Start()
         {
             context = NetworkScene.Register(this);
+            this.wordGenerated = false;
         }
 
         private struct Message
