@@ -70,7 +70,7 @@ namespace DrawAndGuess.Procedure
             previousGameStatus = GameStatus.GameStartPhase;
             currentGameStatus = GameStatus.GameStartPhase;
             this.isGameOwner = false;
-            this.roundDuration = 30.0f;
+            this.roundDuration = 120.0f;
         }
 
         public void CountPlayerNumber()
