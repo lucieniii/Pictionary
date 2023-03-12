@@ -949,8 +949,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f932c73ca45414aac06fdcf5189ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 2642065778944729524}
   drawingMaterial: {fileID: 2100000, guid: 68c99f4e39e9a40358313c128b049e21, type: 2}
-  color: {r: 0, g: 0, b: 0, a: 0}
+  initPosition: {x: 1.738, y: 1.06, z: 1.67}
+  initRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &99471310
 GameObject:
   m_ObjectHideFlags: 0
@@ -10845,8 +10847,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b716ddcb7b5418a8d86ca8d1239684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameController: {fileID: 2642065778944729524}
   drawingMaterial: {fileID: 2100000, guid: a5febd544d0ce4cb9a14a28c8542608f, type: 2}
-  color: {r: 0, g: 0, b: 0, a: 0}
+  initPosition: {x: 0.738, y: 1.06, z: 1.67}
+  initRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &308267470208876335
 GameObject:
   m_ObjectHideFlags: 0

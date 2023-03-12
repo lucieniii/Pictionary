@@ -1,6 +1,7 @@
 using UnityEngine;
 using Ubiq.XR;
 using Ubiq.Messaging;
+using DrawAndGuess.Procedure;
 
 namespace DrawAndGuess.DrawAndGuess
 {
@@ -9,13 +10,17 @@ namespace DrawAndGuess.DrawAndGuess
     // a remote user tells us they are not.
     public class Pen : MonoBehaviour, IGraspable, IUseable
     {
-        private NetworkContext context;
+        public GameController gameController;
+
+        protected NetworkContext context;
         private bool owner;
         private Hand controller;
-        private Transform nib;
+        protected Transform nib;
         public Material drawingMaterial;
         private GameObject currentDrawing;
-        public Color color;
+
+        public Vector3 initPosition;
+        public Quaternion initRotation;
 
         // Amend message to also store current drawing state
         private struct Message
@@ -32,11 +37,19 @@ namespace DrawAndGuess.DrawAndGuess
             }
         }
 
+        public void reset()
+        {
+            this.owner = false;
+            this.controller = null;
+            this.currentDrawing = null;
+            transform.position = this.initPosition;
+            transform.rotation = this.initRotation;
+        }
+
         private void Start()
         {
-            nib = transform.Find("Grip/Nib");
+            // nib = transform.Find("Grip/Nib");
             context = NetworkScene.Register(this);
-            // context = NetworkScene.Register(this, NetworkScene.GenerateUniqueId());
             Debug.Log(context.Id);
             // var shader = Shader.Find("Unlit/Color");
             // drawingMaterial = new Material(shader);
@@ -67,6 +80,16 @@ namespace DrawAndGuess.DrawAndGuess
                 // new
                 context.SendJson(new Message(transform,isDrawing:currentDrawing));
             }
+            if (gameController.previousGameStatus == GameController.GameStatus.RoundPlayPhase
+                && gameController.currentGameStatus == GameController.GameStatus.RoundEndPhase)
+            {
+                this.reset();
+            }
+            if (gameController.previousGameStatus == GameController.GameStatus.GameStartPhase
+                && gameController.currentGameStatus == GameController.GameStatus.GameStartPhase)
+            {
+                this.reset();
+            }
         }
 
         private void LateUpdate()
@@ -80,8 +103,12 @@ namespace DrawAndGuess.DrawAndGuess
 
         void IGraspable.Grasp(Hand controller)
         {
-            owner = true;
-            this.controller = controller;
+            if (gameController.currentGameStatus == GameController.GameStatus.RoundPlayPhase 
+                && gameController.isArtist())
+            {
+                owner = true;
+                this.controller = controller;
+            }
         }
 
         void IGraspable.Release(Hand controller)
@@ -92,7 +119,11 @@ namespace DrawAndGuess.DrawAndGuess
 
         void IUseable.Use(Hand controller)
         {
-            BeginDrawing();
+            if (gameController.currentGameStatus == GameController.GameStatus.RoundPlayPhase 
+                && gameController.isArtist())
+            {
+                BeginDrawing();
+            }
         }
 
         void IUseable.UnUse(Hand controller)
