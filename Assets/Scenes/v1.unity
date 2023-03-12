@@ -32706,8 +32706,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name1: {fileID: 838209284}
-  change1: {fileID: 301038076}
-  score1: {fileID: 289962403}
+  change1: {fileID: 1809322826}
+  score1: {fileID: 1146924639}
   name2: {fileID: 148522454}
   change2: {fileID: 2002456082}
   score2: {fileID: 381537733}
@@ -32726,6 +32726,9 @@ MonoBehaviour:
   name7: {fileID: 416329197}
   change7: {fileID: 310585449}
   score7: {fileID: 680514887}
+  scoresInt: 
+  changesInt: 
+  namesString: []
 --- !u!222 &2642065778981335700
 CanvasRenderer:
   m_ObjectHideFlags: 0
