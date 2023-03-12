@@ -191,10 +191,6 @@ namespace DrawAndGuess.Procedure
 
         public void StepIntoRoundEndPhase()
         {
-            wordGenerator.reset();
-            judgeGuess.reset();
-            this.DeleteDrawings();
-            this.ChangeGameStatus(GameStatus.RoundPlayPhase, GameStatus.RoundEndPhase);
             ranking.updateRankingBoard(
                 judgeGuess.correctNameRecord,
                 judgeGuess.correctTimeRecord,
@@ -203,6 +199,10 @@ namespace DrawAndGuess.Procedure
                 judgeGuess.correctCount
             );
             ranking.showRankingBoard(this.playerNumber);
+            wordGenerator.reset();
+            judgeGuess.reset();
+            this.DeleteDrawings();
+            this.ChangeGameStatus(GameStatus.RoundPlayPhase, GameStatus.RoundEndPhase);
             mainPanel.SwitchPanel(this.rankPanel);
         }
 
