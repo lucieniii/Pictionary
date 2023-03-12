@@ -5765,10 +5765,10 @@ RectTransform:
   m_Father: {fileID: 7422110516879265931}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 85, y: -22.5}
+  m_SizeDelta: {x: 30, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1227024459
 MonoBehaviour:
@@ -25075,10 +25075,10 @@ RectTransform:
   m_Father: {fileID: 7422110516879265931}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 53, y: -22.5}
+  m_SizeDelta: {x: 30, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2115264027119888092
 GameObject:
@@ -32703,12 +32703,12 @@ MonoBehaviour:
   name5: {fileID: 1557837187}
   change5: {fileID: 1057527899}
   score5: {fileID: 788084657}
-  name6: {fileID: 0}
-  change6: {fileID: 0}
-  score6: {fileID: 0}
-  name7: {fileID: 0}
-  change7: {fileID: 0}
-  score7: {fileID: 0}
+  name6: {fileID: 57416628}
+  change6: {fileID: 804770533}
+  score6: {fileID: 672918382}
+  name7: {fileID: 416329197}
+  change7: {fileID: 310585449}
+  score7: {fileID: 680514887}
   scoresInt: 
   changesInt: 
   namesString: []
@@ -50732,10 +50732,10 @@ RectTransform:
   m_Father: {fileID: 7422110516879265931}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 21, y: -22.5}
+  m_SizeDelta: {x: 30, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5311208140100636856
 RectTransform:
