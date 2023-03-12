@@ -9,6 +9,7 @@ namespace DrawAndGuess.Procedure
 {
     public class GameController : MonoBehaviour
     {
+        // TODO: Game button
         public enum GameStatus
         {
             GameStartPhase,
@@ -262,26 +263,39 @@ namespace DrawAndGuess.Procedure
             this.artistNumber = this.artistNumber > this.playerNumber ? this.playerNumber : this.artistNumber;
             // Debug.Log(artistNumber);
             // Debug.Log(playerNumber);
-            for (int i = 0; i < this.artistNumber; i++) 
+            
+            static int roundCounter = 0;
+
+            if (this.artistNumber == 1) 
             {
-                while (true)
+                int nowArtistIndex = roundCounter % this.playerNumber;
+                this.artistUuids[0] = this.playerUuids[nowArtistIndex];
+                roundCounter++;
+            }
+            else
+            {
+                for (int i = 0; i < this.artistNumber; i++) 
                 {
-                    int r = Random.Range(0, this.playerNumber);
-                    bool selected = false;
-                    for (int j = 0; j < i; j++)
+                    while (true)
                     {
-                        if (this.playerUuids[r] == this.artistUuids[j])
+                        int r = Random.Range(0, this.playerNumber);
+                        bool selected = false;
+                        for (int j = 0; j < i; j++)
                         {
-                            selected = true;
+                            if (this.playerUuids[r] == this.artistUuids[j])
+                            {
+                                selected = true;
+                            }
                         }
-                    }
-                    if (!selected) 
-                    {
-                        this.artistUuids[i] = this.playerUuids[r];
-                        break;
+                        if (!selected) 
+                        {
+                            this.artistUuids[i] = this.playerUuids[r];
+                            break;
+                        }
                     }
                 }
             }
+            
             if (this.isArtist())
             {
                 mainPanel.SwitchPanel(this.artistPanel);
