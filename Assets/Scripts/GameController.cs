@@ -4,6 +4,7 @@ using Ubiq.Messaging;
 using Ubiq.Samples;
 using Ubiq.Rooms;
 using DrawAndGuess.Guess;
+using UnityEngine.UI;
 
 namespace DrawAndGuess.Procedure
 {
@@ -51,6 +52,11 @@ namespace DrawAndGuess.Procedure
         public GameObject rankPanel;
         public GameObject artistPanel;
         public GameObject guessPanel;
+
+        public Image artistCountdown;
+        public Image guesserCountdown;
+        public Text artistCountdownText;
+        public Text guesserCountdownText;
 
         // private int standByCount = 0;
 
@@ -361,9 +367,10 @@ namespace DrawAndGuess.Procedure
 
         private void Update()
         {
+            float t = Time.time;
             if (this.currentGameStatus == GameStatus.RoundPlayPhase)
             {
-                if (Time.time >= this.roundStartTime + this.roundDuration)
+                if (t >= this.roundStartTime + this.roundDuration)
                 {
                     this.StepIntoRoundEndPhase();
                     return;
@@ -373,7 +380,16 @@ namespace DrawAndGuess.Procedure
                     this.StepIntoRoundEndPhase();
                     return;
                 }
+                float timeRemain = this.roundDuration - (t - this.roundStartTime);
+                artistCountdown.fillAmount = timeRemain / this.roundDuration;
+                guesserCountdown.fillAmount = timeRemain / this.roundDuration;
+                int minuteRemain = (int)timeRemain / 60;
+                int secondRemain = (int)timeRemain % 60;
+                string timeRemainText = System.String.Format("{0:00}:{0:00}", minuteRemain, secondRemain);
+                artistCountdownText.text = timeRemainText;
+                guesserCountdownText.text = timeRemainText;
             }
+            
         }
 
         public void SwitchToStagePanel()
