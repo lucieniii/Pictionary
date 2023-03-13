@@ -2,7 +2,7 @@ using UnityEngine;
 using Ubiq.XR;
 using Ubiq.Messaging;
 
-namespace DrawAndGuess.DrawAndGuess
+namespace DrawAndGuess.Draw
 {
     public class PinkPen : Pen
     {
