@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 35765259}
   - component: {fileID: 35765258}
   - component: {fileID: 35765257}
-  - component: {fileID: 35765256}
+  - component: {fileID: 35765262}
   m_Layer: 0
   m_Name: PinkPen
   m_TagString: Untagged
@@ -389,22 +389,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &35765256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35765255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f932c73ca45414aac06fdcf5189ed3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameController: {fileID: 2642065778944729524}
-  drawingMaterial: {fileID: 2100000, guid: dc78f6422967aef44b9bf5a6943f57a0, type: 2}
-  initPosition: {x: -4.29, y: 0.85, z: 4.71}
-  initRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &35765257
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -501,6 +485,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &35765262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35765255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8133ea279a0134db385dec53fe1caf06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  drawingMaterial: {fileID: 2100000, guid: dc78f6422967aef44b9bf5a6943f57a0, type: 2}
+  initPosition: {x: -4.29, y: 0.85, z: 4.71}
+  initRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &43298118
 GameObject:
   m_ObjectHideFlags: 0
@@ -13037,7 +13037,7 @@ GameObject:
   - component: {fileID: 1711695266}
   - component: {fileID: 1711695265}
   m_Layer: 0
-  m_Name: BlueNib
+  m_Name: PinkNib
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
