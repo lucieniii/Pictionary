@@ -81,7 +81,7 @@ namespace DrawAndGuess.Procedure
             previousGameStatus = GameStatus.GameStartPhase;
             currentGameStatus = GameStatus.GameStartPhase;
             this.isGameOwner = false;
-            this.roundDuration = 120.0f;
+            this.roundDuration = 300.0f;
             this.roundCounter = 0;
         }
 
@@ -216,11 +216,11 @@ namespace DrawAndGuess.Procedure
             this.DeleteDrawings();
             this.ChangeGameStatus(GameStatus.RoundPlayPhase, GameStatus.RoundEndPhase);
             mainPanel.SwitchPanel(this.rankPanel);
-            this.timeRemain = 120;
+            this.timeRemain = 300;
             artistCountdown.fillAmount = 1;
             guesserCountdown.fillAmount = 1;
-            artistCountdownText.text = "02:00";
-            guesserCountdownText.text = "02:00";
+            artistCountdownText.text = "05:00";
+            guesserCountdownText.text = "05:00";
         }
 
         public void StepIntoGameEndPhase()
