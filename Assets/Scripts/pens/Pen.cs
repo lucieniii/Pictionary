@@ -101,6 +101,7 @@ namespace DrawAndGuess.DrawAndGuess
             }
         }
 
+        // TODO: Can draw 1s after grasp
         void IGraspable.Grasp(Hand controller)
         {
             if (gameController.currentGameStatus == GameController.GameStatus.RoundPlayPhase 
