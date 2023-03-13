@@ -25,6 +25,7 @@ namespace DrawAndGuess.Procedure
         public GameStatus currentGameStatus;
 
         public float roundStartTime;
+        public float timeRemain;
 
         public RoomClient roomClient;
 
@@ -215,6 +216,7 @@ namespace DrawAndGuess.Procedure
             this.DeleteDrawings();
             this.ChangeGameStatus(GameStatus.RoundPlayPhase, GameStatus.RoundEndPhase);
             mainPanel.SwitchPanel(this.rankPanel);
+            this.timeRemain = 120;
         }
 
         public void StepIntoGameEndPhase()
@@ -380,12 +382,12 @@ namespace DrawAndGuess.Procedure
                     this.StepIntoRoundEndPhase();
                     return;
                 }
-                float timeRemain = this.roundDuration - (t - this.roundStartTime);
+                this.timeRemain = this.roundDuration - (t - this.roundStartTime);
                 artistCountdown.fillAmount = timeRemain / this.roundDuration;
                 guesserCountdown.fillAmount = timeRemain / this.roundDuration;
                 int minuteRemain = (int)timeRemain / 60;
                 int secondRemain = (int)timeRemain % 60;
-                string timeRemainText = System.String.Format("{0:00}:{0:00}", minuteRemain, secondRemain);
+                string timeRemainText = System.String.Format("{0:00}:{1:00}", minuteRemain, secondRemain);
                 artistCountdownText.text = timeRemainText;
                 guesserCountdownText.text = timeRemainText;
             }
