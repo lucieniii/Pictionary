@@ -1987,7 +1987,7 @@ GameObject:
   - component: {fileID: 208855535}
   - component: {fileID: 208855534}
   m_Layer: 0
-  m_Name: BlueNib
+  m_Name: YellowNib
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6783,7 +6783,7 @@ GameObject:
   - component: {fileID: 866340876}
   - component: {fileID: 866340875}
   m_Layer: 0
-  m_Name: BlueNib
+  m_Name: WhiteNib
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9809,7 +9809,7 @@ GameObject:
   - component: {fileID: 1226160858}
   - component: {fileID: 1226160857}
   - component: {fileID: 1226160856}
-  - component: {fileID: 1226160855}
+  - component: {fileID: 1226160861}
   m_Layer: 0
   m_Name: YellowPen
   m_TagString: Untagged
@@ -9817,22 +9817,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1226160855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226160854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f932c73ca45414aac06fdcf5189ed3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameController: {fileID: 2642065778944729524}
-  drawingMaterial: {fileID: 2100000, guid: c53acb17fd5cfed46bf43851ddd7f360, type: 2}
-  initPosition: {x: -4.29, y: 0.85, z: 4.51}
-  initRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &1226160856
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9929,6 +9913,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1226160861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226160854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb9f1c3f2f83a45aba65f90509fa0f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  drawingMaterial: {fileID: 2100000, guid: c53acb17fd5cfed46bf43851ddd7f360, type: 2}
+  initPosition: {x: -4.29, y: 0.85, z: 4.51}
+  initRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1227024457
 GameObject:
   m_ObjectHideFlags: 0
@@ -10405,7 +10405,7 @@ GameObject:
   - component: {fileID: 1285632108}
   - component: {fileID: 1285632107}
   - component: {fileID: 1285632106}
-  - component: {fileID: 1285632105}
+  - component: {fileID: 1285632111}
   m_Layer: 0
   m_Name: WhitePen
   m_TagString: Untagged
@@ -10413,22 +10413,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1285632105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285632104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f932c73ca45414aac06fdcf5189ed3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameController: {fileID: 2642065778944729524}
-  drawingMaterial: {fileID: 2100000, guid: cff6a1933e7e84f4db153fd85a289a5e, type: 2}
-  initPosition: {x: -4.29, y: 0.85, z: 4.91}
-  initRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &1285632106
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10525,6 +10509,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1285632111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285632104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbdc670ff562d44478508bdd14d9aab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
+  drawingMaterial: {fileID: 2100000, guid: cff6a1933e7e84f4db153fd85a289a5e, type: 2}
+  initPosition: {x: -4.29, y: 0.85, z: 4.91}
+  initRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1307805395
 GameObject:
   m_ObjectHideFlags: 0
