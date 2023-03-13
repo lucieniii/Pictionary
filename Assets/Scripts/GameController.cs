@@ -217,6 +217,10 @@ namespace DrawAndGuess.Procedure
             this.ChangeGameStatus(GameStatus.RoundPlayPhase, GameStatus.RoundEndPhase);
             mainPanel.SwitchPanel(this.rankPanel);
             this.timeRemain = 120;
+            artistCountdown.fillAmount = 1;
+            guesserCountdown.fillAmount = 1;
+            artistCountdownText.text = "02:00";
+            guesserCountdownText.text = "02:00";
         }
 
         public void StepIntoGameEndPhase()
