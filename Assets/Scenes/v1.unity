@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8133ea279a0134db385dec53fe1caf06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  gameController: {fileID: 2642065778944729524}
   drawingMaterial: {fileID: 2100000, guid: dc78f6422967aef44b9bf5a6943f57a0, type: 2}
   initPosition: {x: -4.29, y: 0.85, z: 4.71}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0437223c21218448a1759b1e4a35350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  gameController: {fileID: 2642065778944729524}
   drawingMaterial: {fileID: 2100000, guid: c2f84e2adc6fca14fa4583498dd3ed91, type: 2}
   initPosition: {x: -4.29, y: 0.85, z: 3.71}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -4096,7 +4096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae4e6db8323f9d040a4ef201558a38d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  gameController: {fileID: 2642065778944729524}
   drawingMaterial: {fileID: 2100000, guid: b729f3f3e8b2bcf4d834b5da6a391207, type: 2}
   initPosition: {x: -4.29, y: 0.85, z: 4.11}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -9925,7 +9925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb9f1c3f2f83a45aba65f90509fa0f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  gameController: {fileID: 2642065778944729524}
   drawingMaterial: {fileID: 2100000, guid: c53acb17fd5cfed46bf43851ddd7f360, type: 2}
   initPosition: {x: -4.29, y: 0.85, z: 4.51}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -9965,10 +9965,10 @@ RectTransform:
   m_Father: {fileID: 7422110516879265931}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 85, y: -22.5}
+  m_SizeDelta: {x: 30, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1227024459
 MonoBehaviour:
@@ -10521,7 +10521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbdc670ff562d44478508bdd14d9aab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  gameController: {fileID: 2642065778944729524}
   drawingMaterial: {fileID: 2100000, guid: cff6a1933e7e84f4db153fd85a289a5e, type: 2}
   initPosition: {x: -4.29, y: 0.85, z: 4.91}
   initRotation: {x: 0, y: 0, z: 0, w: 0}
@@ -32100,10 +32100,10 @@ RectTransform:
   m_Father: {fileID: 7422110516879265931}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 53, y: -22.5}
+  m_SizeDelta: {x: 30, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2115264027119888092
 GameObject:
@@ -57716,10 +57716,10 @@ RectTransform:
   m_Father: {fileID: 7422110516879265931}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 21, y: -22.5}
+  m_SizeDelta: {x: 30, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5311208140100636856
 RectTransform:
