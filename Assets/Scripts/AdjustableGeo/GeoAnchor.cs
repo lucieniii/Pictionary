@@ -7,15 +7,46 @@ namespace DrawAndGuess.Draw
 {
     public class GeoAnchor : MonoBehaviour, IGraspable
     {
+        protected NetworkContext context;
+
         public GameObject leftHand, rightHand;
         public float anchorSize = 0.2f;
-        public float distanceToGeo = 0.15f;
+        // public float distanceToGeo = 0.15f;
         public Vector3 relativeCoef = new Vector3(1.0f, -1.0f, -1.0f);
 
         private Vector3 localGrabPoint;
         private Quaternion localGrabRotation;
         private Quaternion grabHandRotation;
-        protected Transform follow;
+        private Transform follow;
+
+        public GameObject hiddenAnchor;
+        public Geometry geometry;
+
+        private struct Message
+        {
+            public Vector3 position, localScale;
+            public Quaternion rotation;
+
+            public Message(Transform transform)
+            {
+                this.position = transform.position;
+                this.rotation = transform.rotation;
+                this.localScale = transform.localScale;
+            }
+        }
+
+        public void ProcessMessage (ReferenceCountedSceneGraphMessage msg)
+        {
+            var data = msg.FromJson<Message>();
+            transform.position = data.position;
+            transform.rotation = data.rotation;
+            transform.localScale = data.localScale;
+        }
+
+        public void broadCastChange ()
+        {
+            context.SendJson(new Message(transform));
+        }
 
         public void setAnchorPosition(Vector3 geoPos, Vector3 geoScale, Quaternion geoRotation)
         {
@@ -28,6 +59,7 @@ namespace DrawAndGuess.Draw
         private void Start()
         {
             HideAnchor();
+            context = NetworkScene.Register(this);
             Debug.Log(transform.localPosition);
         }
 
@@ -43,6 +75,10 @@ namespace DrawAndGuess.Draw
 
         public bool touchAnchor()
         {
+            if (follow)
+            {
+                return true;
+            }
             float distLeft = Vector3.Distance(this.transform.position, leftHand.transform.position);
             float distRight = Vector3.Distance(this.transform.position, rightHand.transform.position);
             return distLeft <= this.anchorSize || distRight <= this.anchorSize;
@@ -51,6 +87,13 @@ namespace DrawAndGuess.Draw
         public virtual void adjustGeoScale(Vector3 translate)
         {
             return;
+        }
+
+        public void setPosition()
+        {
+            transform.position = hiddenAnchor.transform.position;
+            transform.rotation = hiddenAnchor.transform.rotation;
+            broadCastChange();
         }
 
         private void Update()
@@ -65,6 +108,8 @@ namespace DrawAndGuess.Draw
 
                 afterAnchorPos = transform.localPosition;
                 adjustGeoScale(afterAnchorPos - previousAnchorPos);
+
+                // setPosition();
             }
         }
 
@@ -79,6 +124,8 @@ namespace DrawAndGuess.Draw
 
         public void Release(Hand controller)
         {
+            setPosition();
+            geometry.broadCastChange();
             follow = null;
         }
     }
