@@ -134,22 +134,28 @@ namespace DrawAndGuess.DrawAndGuess
         private void BeginDrawing()
         {
             currentDrawing = new GameObject("Drawing");
+
             var trail = currentDrawing.AddComponent<TrailRenderer>();
             trail.time = Mathf.Infinity;
             trail.material = drawingMaterial;
             trail.startWidth = .05f;
             trail.endWidth = .05f;
             trail.minVertexDistance = .02f;
+            //GameObject Masterpiece = GameObject.Find ("Masterpiece");
+            //trail.transform.parent = Masterpiece.transform;
+
 
             currentDrawing.transform.parent = nib.transform;
             currentDrawing.transform.localPosition = new Vector3(0.0f, 0.5f, 0.0f);
             currentDrawing.transform.localRotation = Quaternion.identity;
-        }
+                    }
 
         private void EndDrawing()
         {
             var trail = currentDrawing.GetComponent<TrailRenderer>();
             currentDrawing.transform.parent = null;
+            //GameObject Masterpiece = GameObject.Find ("Masterpiece");
+
             currentDrawing.GetComponent<TrailRenderer>().emitting = false;
             currentDrawing = null;
         }

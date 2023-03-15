@@ -213,7 +213,7 @@ namespace DrawAndGuess.Procedure
             ranking.showRankingBoard(this.playerNumber);
             wordGenerator.reset();
             judgeGuess.reset();
-            this.DeleteDrawings();
+            //this.DeleteDrawings();
             this.ChangeGameStatus(GameStatus.RoundPlayPhase, GameStatus.RoundEndPhase);
             mainPanel.SwitchPanel(this.rankPanel);
             this.timeRemain = 300;
@@ -381,7 +381,7 @@ namespace DrawAndGuess.Procedure
                     this.StepIntoRoundEndPhase();
                     return;
                 }
-                if (this.judgeGuess.correctCount == this.playerNumber - this.artistNumber)
+                if (this.judgeGuess.correctCount == this.playerNumber - this.artistNumber + 5)
                 {
                     this.StepIntoRoundEndPhase();
                     return;
