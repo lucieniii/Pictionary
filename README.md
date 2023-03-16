@@ -136,23 +136,33 @@ TBD:
 
 延迟半秒进rank
 
-积分系统rank
+积分系统rank **DONE**
 
 显示正确答案
 
-game入口切换到当前phase done
+game入口切换到当前phase **DONE**
 
-美化UI (panel,button，clicksound)
+美化UI (panel,button，clicksound) 
 button背景，Panel统一背景
 
-房间场景
+房间场景 **DONE**
 
 保存画作
 
-每轮round之后笔归位 done
+每轮round之后笔归位 **DONE**
 
-笔的owner唯一 done
+笔的owner唯一 **DONE**
 
-轮流artist
+轮流artist **DONE**
 
 avatar 和场景的碰撞
+
+在room中才能进游戏
+
+## Change the round duration
+
+**NOW 300 seconds**
+
++ `GameController.cs`: `300`, `03:00`
+
++ Unity scene: Artist Panel/Guesser Panel -> Countdown -> Text -> 05:00

@@ -2,7 +2,7 @@ using UnityEngine;
 using Ubiq.XR;
 using Ubiq.Messaging;
 
-namespace DrawAndGuess.DrawAndGuess
+namespace DrawAndGuess.Draw
 {
     // Adds simple networking to the 3d pen. The approach used is to draw locally
     // when a remote user tells us they are drawing, and stop drawing locally when

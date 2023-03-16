@@ -3,7 +3,7 @@ using Ubiq.XR;
 using Ubiq.Messaging;
 using DrawAndGuess.Procedure;
 
-namespace DrawAndGuess.DrawAndGuess
+namespace DrawAndGuess.Draw
 {
     // Adds simple networking to the 3d pen. The approach used is to draw locally
     // when a remote user tells us they are drawing, and stop drawing locally when
@@ -101,6 +101,7 @@ namespace DrawAndGuess.DrawAndGuess
             }
         }
 
+        // TODO: Can draw 1s after grasp
         void IGraspable.Grasp(Hand controller)
         {
             if (gameController.currentGameStatus == GameController.GameStatus.RoundPlayPhase 
