@@ -166,3 +166,8 @@ avatar 和场景的碰撞
 + `GameController.cs`: `300`, `03:00`
 
 + Unity scene: Artist Panel/Guesser Panel -> Countdown -> Text -> 05:00
+
+
++演示流程：
+
+AS game -> new round -> generateword -> draw -> we guess
