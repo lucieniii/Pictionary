@@ -10,6 +10,7 @@ namespace DrawAndGuess.Draw
         public NetworkContext context;
         public GeometryNetworking geometryCopy;
         public GeometryColor geometryColor;
+        public GeometryContainer geometryContainer;
         public Transform parent;
 
         private struct Message
@@ -29,18 +30,15 @@ namespace DrawAndGuess.Draw
         {
             var data = msg.FromJson<Message>();
             GeometryNetworking newGeometry = GameObject.Instantiate(geometryCopy, parent);
+            geometryContainer.AddGeometry(gameObject);
             newGeometry.SetNetworkIdAndColor(data.newId, data.newGeometryId, data.color);
             // Debug.Log("Copying.");
         }
 
         private void Start()
         {
-            // anchor.setAnchorPosition(transform.localPosition, transform.localScale, transform.localRotation);
-            // Debug.Log(transform.position);
-            // Debug.Log(transform.lossyScale);
             context = NetworkScene.Register(this);
             Debug.Log(context.Id);
-            //Debug.Log(transform.parent);
         }
 
         public void SetNetworkIdAndColor(NetworkId newId, NetworkId newGeometryId, Color color)
@@ -55,6 +53,7 @@ namespace DrawAndGuess.Draw
         public void CopySelf(Color color)
         {
             GeometryNetworking newGeometry = GameObject.Instantiate(geometryCopy, parent);
+            geometryContainer.AddGeometry(gameObject);
             NetworkId newId = NetworkId.Unique(), newGeometryId = NetworkId.Unique();
             newGeometry.SetNetworkIdAndColor(newId, newGeometryId, color);
             context.SendJson(new Message(newId, newGeometryId, color));
