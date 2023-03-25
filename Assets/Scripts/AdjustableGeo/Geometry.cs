@@ -7,7 +7,7 @@ namespace DrawAndGuess.Draw
 {
     public class Geometry: MonoBehaviour, IGraspable
     {
-        protected NetworkContext context;
+        public NetworkContext context;
 
         private Vector3 localGrabPoint;
         private Quaternion localGrabRotation;
@@ -19,6 +19,9 @@ namespace DrawAndGuess.Draw
 
         public GeoAnchor[] anchors;
         private int anchorNumber;
+
+        private bool newGeometry;
+        public GeometryNetworking geometryCopy;
 
         private struct Message
         {
@@ -53,11 +56,14 @@ namespace DrawAndGuess.Draw
             // Debug.Log(transform.position);
             // Debug.Log(transform.lossyScale);
             context = NetworkScene.Register(this);
+            //Debug.Log(context.Id);
+            //Debug.Log(transform.parent);
             anchorNumber = anchors.Length;
             localAnchorPoints = new Vector3[anchorNumber];
             localAnchorRotations = new Quaternion[anchorNumber];
+            newGeometry = true;
         }
-
+        
         public void Grasp(Hand controller)
         {
             var handTransform = controller.transform;
@@ -70,6 +76,11 @@ namespace DrawAndGuess.Draw
                 GeoAnchor anchor = anchors[i];
                 localAnchorPoints[i] = handTransform.InverseTransformPoint(anchor.transform.position);
                 localAnchorRotations[i] = Quaternion.Inverse(handTransform.rotation) * anchor.transform.rotation;
+            }
+            if (newGeometry)
+            {
+                geometryCopy.CopySelf();
+                newGeometry = false;
             }
             
         }
