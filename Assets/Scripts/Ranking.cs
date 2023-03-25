@@ -78,7 +78,7 @@ namespace DrawAndGuess.Procedure
         private void Start()
         {
             this.listLength = 7;
-            this.roundDuration = 120;
+            this.roundDuration = 300;
         }
 
         public void initRankingBoard(int playerNumber, string[] playerNames)

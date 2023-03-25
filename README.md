@@ -165,4 +165,7 @@ avatar 和场景的碰撞
 
 + `GameController.cs`: `300`, `03:00`
 
++ `Ranking.cs`: `this.roundDuration = 300;`
+
 + Unity scene: Artist Panel/Guesser Panel -> Countdown -> Text -> 05:00
+
