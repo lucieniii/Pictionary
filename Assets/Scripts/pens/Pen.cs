@@ -86,7 +86,7 @@ namespace DrawAndGuess.Draw
                 this.reset();
             }
             if (gameController.previousGameStatus == GameController.GameStatus.GameStartPhase
-                && gameController.currentGameStatus == GameController.GameStatus.GameStartPhase)
+                && gameController.currentGameStatus == GameController.GameStatus.RoundStartPhase)
             {
                 this.reset();
             }
@@ -104,8 +104,7 @@ namespace DrawAndGuess.Draw
         // TODO: Can draw 1s after grasp
         void IGraspable.Grasp(Hand controller)
         {
-            if (gameController.currentGameStatus == GameController.GameStatus.RoundPlayPhase 
-                && gameController.isArtist())
+            if (gameController.CanUse())
             {
                 owner = true;
                 this.controller = controller;
@@ -120,8 +119,7 @@ namespace DrawAndGuess.Draw
 
         void IUseable.Use(Hand controller)
         {
-            if (gameController.currentGameStatus == GameController.GameStatus.RoundPlayPhase 
-                && gameController.isArtist())
+            if (gameController.CanUse())
             {
                 BeginDrawing();
             }

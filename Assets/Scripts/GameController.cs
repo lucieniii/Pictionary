@@ -4,6 +4,7 @@ using Ubiq.Messaging;
 using Ubiq.Samples;
 using Ubiq.Rooms;
 using DrawAndGuess.Guess;
+using DrawAndGuess.Draw;
 using UnityEngine.UI;
 
 namespace DrawAndGuess.Procedure
@@ -46,6 +47,8 @@ namespace DrawAndGuess.Procedure
         public WordGenerator wordGenerator;
         public JudgeGuess judgeGuess;
         public Ranking ranking;
+        public GeometryContainer[] geometryContainers;
+        public GeometryColor[] geometryColors;
 
         public GameObject startGamePanel;
         public GameObject othersPanel;
@@ -135,6 +138,7 @@ namespace DrawAndGuess.Procedure
             {
                 if (data.nextGameStatus == GameStatus.RoundStartPhase)
                 {
+                    this.DeleteDrawings();
                     this.CountPlayerNumber();
                     ranking.initRankingBoard(this.playerNumber, this.playerNames);
                     mainPanel.SwitchPanel(this.othersPanel);
@@ -171,6 +175,13 @@ namespace DrawAndGuess.Procedure
                     {
                         mainPanel.SwitchPanel(this.guessPanel);
                     }
+                    else
+                    {
+                        foreach (GeometryColor geometryColor in geometryColors)
+                        {
+                            geometryColor.Show();
+                        }
+                    }
                 }
             }
             else if (data.previousGameStatus == GameStatus.GameEndPhase)
@@ -181,7 +192,7 @@ namespace DrawAndGuess.Procedure
                 }
             }
             this.ChangeGameStatus(data.previousGameStatus, data.nextGameStatus);
-            Debug.Log("Receive Message");
+            // Debug.Log("Receive Message");
         }  
 
         public void DeleteDrawings()
@@ -194,6 +205,14 @@ namespace DrawAndGuess.Procedure
                     child.gameObject.SetActive(false);
                     Destroy(child.gameObject);
                 }
+            }
+            foreach (GeometryContainer geometryContainer in geometryContainers)
+            {
+                geometryContainer.Reset();
+            }
+            foreach (GeometryColor geometryColor in geometryColors)
+            {
+                geometryColor.Hide();
             }
         }
 
@@ -232,6 +251,7 @@ namespace DrawAndGuess.Procedure
         {
             if (!this.isGameOwner && currentGameStatus == GameStatus.GameStartPhase)
             {
+                this.DeleteDrawings();
                 this.ChangeGameStatus(GameStatus.GameStartPhase, GameStatus.RoundStartPhase);
                 context.SendJson(new Message(
                     GameStatus.GameStartPhase, 
@@ -265,6 +285,10 @@ namespace DrawAndGuess.Procedure
             {
                 mainPanel.SwitchPanel(this.startGamePanel);
                 this.ChangeGameStatus(GameStatus.GameEndPhase, GameStatus.GameStartPhase);
+                foreach (GeometryColor geometryColor in geometryColors)
+                {
+                    geometryColor.Show();
+                }
             }
             else if (this.currentGameStatus == GameStatus.GameStartPhase)
             {
@@ -342,6 +366,10 @@ namespace DrawAndGuess.Procedure
             if (this.isArtist())
             {
                 mainPanel.SwitchPanel(this.artistPanel);
+                foreach (GeometryColor geometryColor in geometryColors)
+                {
+                    geometryColor.Show();
+                }
             }
             else 
             {
@@ -439,6 +467,20 @@ namespace DrawAndGuess.Procedure
                     mainPanel.SwitchPanel(this.rankPanel);
                     break;
             }
+        }
+
+        public bool CanUse()
+        {
+            if (currentGameStatus == GameStatus.RoundPlayPhase 
+                && this.isArtist())
+            {
+                return true;
+            }
+            if (currentGameStatus == GameStatus.GameStartPhase)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

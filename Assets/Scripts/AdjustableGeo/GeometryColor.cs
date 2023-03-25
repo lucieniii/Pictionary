@@ -12,6 +12,8 @@ namespace DrawAndGuess.Draw
 
         public NetworkContext context;
 
+        public GameController gameController;
+
         private struct Message
         {
             public Color color;
@@ -31,6 +33,7 @@ namespace DrawAndGuess.Draw
         private void Start()
         {
             context = NetworkScene.Register(this);
+            // Hide();
         }
 
         public void ChangeRedChannel(Slider slider)
@@ -49,6 +52,16 @@ namespace DrawAndGuess.Draw
         {
             newestGeometry.ChangeBlueChannel(slider);
             context.SendJson(new Message(newestGeometry.GetComponent<MeshRenderer>().material.color));
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+        }
+
+        public void Show()
+        {
+            gameObject.SetActive(true);
         }
     }
 }

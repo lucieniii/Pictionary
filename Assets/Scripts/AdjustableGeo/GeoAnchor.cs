@@ -22,6 +22,8 @@ namespace DrawAndGuess.Draw
         public GameObject hiddenAnchor;
         public Geometry geometry;
 
+        public GameController gameController;
+
         private struct Message
         {
             public Vector3 position, localScale;
@@ -70,7 +72,10 @@ namespace DrawAndGuess.Draw
 
         public void ShowAnchor()
         {
-            this.GetComponent<Renderer>().enabled = true;
+            if (gameController.CanUse())
+            {
+                this.GetComponent<Renderer>().enabled = true;
+            }
         }
 
         public bool touchAnchor()
@@ -115,11 +120,14 @@ namespace DrawAndGuess.Draw
 
         public void Grasp(Hand controller)
         {
-            var handTransform = controller.transform;
-            localGrabPoint = handTransform.InverseTransformPoint(transform.position); //transform.InverseTransformPoint(handTransform.position);
-            localGrabRotation = Quaternion.Inverse(handTransform.rotation) * transform.rotation;
-            grabHandRotation = handTransform.rotation;
-            follow = handTransform;
+            if (gameController.CanUse())
+            {
+                var handTransform = controller.transform;
+                localGrabPoint = handTransform.InverseTransformPoint(transform.position); //transform.InverseTransformPoint(handTransform.position);
+                localGrabRotation = Quaternion.Inverse(handTransform.rotation) * transform.rotation;
+                grabHandRotation = handTransform.rotation;
+                follow = handTransform;
+            }
         }
 
         public void Release(Hand controller)

@@ -24,6 +24,8 @@ namespace DrawAndGuess.Draw
         private bool newGeometry;
         public GeometryNetworking geometryCopy;
 
+        public GameController gameController;
+
         private struct Message
         {
             public Vector3 position, localScale;
@@ -67,23 +69,25 @@ namespace DrawAndGuess.Draw
 
         public void Grasp(Hand controller)
         {
-            var handTransform = controller.transform;
-            localGrabPoint = handTransform.InverseTransformPoint(transform.position); //transform.InverseTransformPoint(handTransform.position);
-            localGrabRotation = Quaternion.Inverse(handTransform.rotation) * transform.rotation;
-            grabHandRotation = handTransform.rotation;
-            follow = handTransform;
-            for (int i = 0; i < anchorNumber; i++)
+            if (gameController.CanUse())
             {
-                GeoAnchor anchor = anchors[i];
-                localAnchorPoints[i] = handTransform.InverseTransformPoint(anchor.transform.position);
-                localAnchorRotations[i] = Quaternion.Inverse(handTransform.rotation) * anchor.transform.rotation;
+                var handTransform = controller.transform;
+                localGrabPoint = handTransform.InverseTransformPoint(transform.position); //transform.InverseTransformPoint(handTransform.position);
+                localGrabRotation = Quaternion.Inverse(handTransform.rotation) * transform.rotation;
+                grabHandRotation = handTransform.rotation;
+                follow = handTransform;
+                for (int i = 0; i < anchorNumber; i++)
+                {
+                    GeoAnchor anchor = anchors[i];
+                    localAnchorPoints[i] = handTransform.InverseTransformPoint(anchor.transform.position);
+                    localAnchorRotations[i] = Quaternion.Inverse(handTransform.rotation) * anchor.transform.rotation;
+                }
+                if (newGeometry)
+                {
+                    geometryCopy.CopySelf(GetComponent<MeshRenderer>().material.color);
+                    newGeometry = false;
+                }
             }
-            if (newGeometry)
-            {
-                geometryCopy.CopySelf(GetComponent<MeshRenderer>().material.color);
-                newGeometry = false;
-            }
-            
         }
 
         public void Release(Hand controller)
