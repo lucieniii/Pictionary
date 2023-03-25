@@ -5,9 +5,9 @@ using System.IO;
 public class LoadJson{
     public static T LoadJsonFromFile<T>()where T:class
     {
-        if (!File.Exists(Application.dataPath + "wordlist.json"))
+        if (!File.Exists(Application.dataPath + "/Scripts/wordlist.json"))
         {   
-            Debug.LogError(Application.dataPath);
+            // Debug.LogError(Application.dataPath);
             Debug.LogError("Don't Find");
             return null;
         }

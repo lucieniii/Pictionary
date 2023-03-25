@@ -50,7 +50,7 @@ namespace DrawAndGuess.Draw
         {
             // nib = transform.Find("Grip/Nib");
             context = NetworkScene.Register(this);
-            Debug.Log(context.Id);
+            // Debug.Log(context.Id);
             // var shader = Shader.Find("Unlit/Color");
             // drawingMaterial = new Material(shader);
         }

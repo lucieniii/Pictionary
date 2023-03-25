@@ -83,7 +83,7 @@ namespace DrawAndGuess.Procedure
 
         public void initRankingBoard(int playerNumber, string[] playerNames)
         {
-            Debug.Log("init ranking board");
+            // Debug.Log("init ranking board");
             this.constructTextArrays();
             for (int i = 0; i < playerNumber; i++)
             {
@@ -146,8 +146,8 @@ namespace DrawAndGuess.Procedure
                 {
                     for (int j = 0; j < artistNumber; j++)
                     {
-                        Debug.Log(playerUuids[i]);
-                        Debug.Log(artistUuids[j]);
+                        // Debug.Log(playerUuids[i]);
+                        // Debug.Log(artistUuids[j]);
                         if (playerUuids[i] == artistUuids[j])
                         {
                             return true;

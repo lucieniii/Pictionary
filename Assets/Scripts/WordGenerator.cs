@@ -73,11 +73,11 @@ namespace DrawAndGuess.Guess
                 // index = index % wordbox.wordlist.Count;               
                 // word = wordbox.wordlist[index];
                 // wordGenerated = true;
-                Debug.Log("here");
+                // Debug.Log("here");
                 List<string> wordlist = new List<string>(){"apple","bike","car","desk","computer","horse","house","chair","bottle","glass","skateboard","rainbow","pen","dice","fire","plane","dog","candle","guitar","sofa","cellphone","shoes","watch","umbrella","hotdog","hammer","chocolate","spiderweb","pizza","glasses","piano","Olympics","blackhole","GreatWall","IceCream","dictionary","door","drum","star","turtle","Bus","torch","flag","salt","carrot","sandwich","roof","tent","Clock","broom","train","king","Elephant",""};
                 int index = GetRandomSeed();
-                Debug.Log(wordlist.Count);
-                Debug.Log(wordlist);
+                // Debug.Log(wordlist.Count);
+                // Debug.Log(wordlist);
                 index = index % wordlist.Count;
                 
                 this.word = wordlist[index];

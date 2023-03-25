@@ -38,7 +38,7 @@ namespace DrawAndGuess.Draw
         private void Start()
         {
             context = NetworkScene.Register(this);
-            Debug.Log(context.Id);
+            // Debug.Log(context.Id);
         }
 
         public void SetNetworkIdAndColor(NetworkId newId, NetworkId newGeometryId, Color color)
