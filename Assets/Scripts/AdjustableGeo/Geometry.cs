@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Ubiq.XR;
 using Ubiq.Messaging;
 using DrawAndGuess.Procedure;
@@ -63,7 +64,7 @@ namespace DrawAndGuess.Draw
             localAnchorRotations = new Quaternion[anchorNumber];
             newGeometry = true;
         }
-        
+
         public void Grasp(Hand controller)
         {
             var handTransform = controller.transform;
@@ -79,7 +80,7 @@ namespace DrawAndGuess.Draw
             }
             if (newGeometry)
             {
-                geometryCopy.CopySelf();
+                geometryCopy.CopySelf(GetComponent<MeshRenderer>().material.color);
                 newGeometry = false;
             }
             
@@ -118,6 +119,27 @@ namespace DrawAndGuess.Draw
                     anchor.HideAnchor();
                 }
             }
+        }
+
+        public void ChangeRedChannel(Slider slider)
+        {
+            Color c = GetComponent<MeshRenderer>().material.color;
+            c[0] = slider.value;
+            GetComponent<MeshRenderer>().material.color = c;
+        }
+
+        public void ChangeGreenChannel(Slider slider)
+        {
+            Color c = GetComponent<MeshRenderer>().material.color;
+            c[1] = slider.value;
+            GetComponent<MeshRenderer>().material.color = c;
+        }
+
+        public void ChangeBlueChannel(Slider slider)
+        {
+            Color c = GetComponent<MeshRenderer>().material.color;
+            c[2] = slider.value;
+            GetComponent<MeshRenderer>().material.color = c;
         }
     }
 }

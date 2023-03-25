@@ -9,26 +9,28 @@ namespace DrawAndGuess.Draw
     {
         public NetworkContext context;
         public GeometryNetworking geometryCopy;
+        public GeometryColor geometryColor;
         public Transform parent;
 
         private struct Message
         {
             public NetworkId newId, newGeometryId;
+            public Color color;
 
-            public Message(NetworkId newId, NetworkId newGeometryId)
+            public Message(NetworkId newId, NetworkId newGeometryId, Color color)
             {
                 this.newId = newId;
                 this.newGeometryId = newGeometryId;
+                this.color = color;
             }
         }
 
         public void ProcessMessage (ReferenceCountedSceneGraphMessage msg)
         {
             var data = msg.FromJson<Message>();
-            var geometry = GetComponentInChildren<Geometry>();
             GeometryNetworking newGeometry = GameObject.Instantiate(geometryCopy, parent);
-            newGeometry.SetNetworkId(data.newId, data.newGeometryId);
-            Debug.Log("Copying.");
+            newGeometry.SetNetworkIdAndColor(data.newId, data.newGeometryId, data.color);
+            // Debug.Log("Copying.");
         }
 
         private void Start()
@@ -41,20 +43,22 @@ namespace DrawAndGuess.Draw
             //Debug.Log(transform.parent);
         }
 
-        public void SetNetworkId(NetworkId newId, NetworkId newGeometryId)
+        public void SetNetworkIdAndColor(NetworkId newId, NetworkId newGeometryId, Color color)
         {
             context.Id = newId;
             Geometry geometry = GetComponentInChildren<Geometry>();
             geometry.context.Id = newGeometryId;
+            geometryColor.newestGeometry = geometry;
+            geometry.GetComponent<MeshRenderer>().material.color = color;
         }
 
-        public void CopySelf()
+        public void CopySelf(Color color)
         {
             GeometryNetworking newGeometry = GameObject.Instantiate(geometryCopy, parent);
             NetworkId newId = NetworkId.Unique(), newGeometryId = NetworkId.Unique();
-            newGeometry.SetNetworkId(newId, newGeometryId);
-            context.SendJson(new Message(newId, newGeometryId));
-            Debug.Log("Copying.");
+            newGeometry.SetNetworkIdAndColor(newId, newGeometryId, color);
+            context.SendJson(new Message(newId, newGeometryId, color));
+            // Debug.Log("Copying.");
         }
     }
 }
