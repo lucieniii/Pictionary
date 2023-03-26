@@ -62,7 +62,7 @@ namespace DrawAndGuess.Draw
         {
             HideAnchor();
             context = NetworkScene.Register(this);
-            Debug.Log(transform.localPosition);
+            // Debug.Log(transform.localPosition);
         }
 
         public void HideAnchor()
