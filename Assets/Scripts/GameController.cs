@@ -158,6 +158,10 @@ namespace DrawAndGuess.Procedure
                     if (this.isArtist())
                     {
                         mainPanel.SwitchPanel(this.artistPanel);
+                        foreach (GeometryColor geometryColor in geometryColors)
+                        {
+                            geometryColor.Show();
+                        }
                     }
                     else 
                     {
@@ -174,13 +178,6 @@ namespace DrawAndGuess.Procedure
                     if (!this.isArtist())
                     {
                         mainPanel.SwitchPanel(this.guessPanel);
-                    }
-                    else
-                    {
-                        foreach (GeometryColor geometryColor in geometryColors)
-                        {
-                            geometryColor.Show();
-                        }
                     }
                 }
             }
