@@ -84,7 +84,7 @@ namespace DrawAndGuess.Procedure
             previousGameStatus = GameStatus.GameStartPhase;
             currentGameStatus = GameStatus.GameStartPhase;
             this.isGameOwner = false;
-            this.roundDuration = 300.0f;
+            this.roundDuration = 20.0f;
             this.roundCounter = 0;
         }
 
@@ -139,7 +139,6 @@ namespace DrawAndGuess.Procedure
                 if (data.nextGameStatus == GameStatus.RoundStartPhase)
                 {
                     this.DeleteDrawings();
-                    ranking.resetChange();
                     this.CountPlayerNumber();
                     ranking.initRankingBoard(this.playerNumber, this.playerNames);
                     mainPanel.SwitchPanel(this.othersPanel);
@@ -233,7 +232,7 @@ namespace DrawAndGuess.Procedure
             this.DeleteDrawings();
             this.ChangeGameStatus(GameStatus.RoundPlayPhase, GameStatus.RoundEndPhase);
             mainPanel.SwitchPanel(this.rankPanel);
-            this.timeRemain = 300;
+            this.timeRemain = 20;
             artistCountdown.fillAmount = 1;
             guesserCountdown.fillAmount = 1;
             artistCountdownText.text = "05:00";
@@ -250,7 +249,6 @@ namespace DrawAndGuess.Procedure
             if (!this.isGameOwner && currentGameStatus == GameStatus.GameStartPhase)
             {
                 this.DeleteDrawings();
-                ranking.resetChange();
                 this.ChangeGameStatus(GameStatus.GameStartPhase, GameStatus.RoundStartPhase);
                 context.SendJson(new Message(
                     GameStatus.GameStartPhase, 

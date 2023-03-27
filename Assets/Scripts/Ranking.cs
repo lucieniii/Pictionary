@@ -78,7 +78,7 @@ namespace DrawAndGuess.Procedure
         private void Start()
         {
             this.listLength = 7;
-            this.roundDuration = 300;
+            this.roundDuration = 20;
         }
 
         public void initRankingBoard(int playerNumber, string[] playerNames)
@@ -197,14 +197,6 @@ namespace DrawAndGuess.Procedure
                     changesInt[i] = artistScore;
                     scoresInt[i] += changesInt[i];
                 }
-            }
-        }
-
-        public void resetChange()
-        {
-            for (int i = 0; i < listLength; i++)
-            {
-                changesInt[i] = 0;
             }
         }
     }
