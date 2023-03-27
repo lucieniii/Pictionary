@@ -199,5 +199,13 @@ namespace DrawAndGuess.Procedure
                 }
             }
         }
+
+        public void resetChange()
+        {
+            for (int i = 0; i < listLength; i++)
+            {
+                changesInt[i] = 0;
+            }
+        }
     }
 }

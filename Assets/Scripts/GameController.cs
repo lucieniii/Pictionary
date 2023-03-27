@@ -139,6 +139,7 @@ namespace DrawAndGuess.Procedure
                 if (data.nextGameStatus == GameStatus.RoundStartPhase)
                 {
                     this.DeleteDrawings();
+                    ranking.resetChange();
                     this.CountPlayerNumber();
                     ranking.initRankingBoard(this.playerNumber, this.playerNames);
                     mainPanel.SwitchPanel(this.othersPanel);
@@ -249,6 +250,7 @@ namespace DrawAndGuess.Procedure
             if (!this.isGameOwner && currentGameStatus == GameStatus.GameStartPhase)
             {
                 this.DeleteDrawings();
+                ranking.resetChange();
                 this.ChangeGameStatus(GameStatus.GameStartPhase, GameStatus.RoundStartPhase);
                 context.SendJson(new Message(
                     GameStatus.GameStartPhase, 
