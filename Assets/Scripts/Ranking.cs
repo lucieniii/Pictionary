@@ -171,6 +171,10 @@ namespace DrawAndGuess.Procedure
             int artistNumber)
         {
             int artistScore = 0;
+            for (int i = 0; i < listLength; i++)
+            {
+                changesInt[i] = 0;
+            }
             for (int i = 0; i < playerNumber; i++)
             {
                 for (int j = 0; j < correctCount; j++)
