@@ -42,8 +42,8 @@ namespace DrawAndGuess.Draw
             this.owner = false;
             this.controller = null;
             this.currentDrawing = null;
-            transform.position = this.initPosition;
-            transform.rotation = this.initRotation;
+            transform.localPosition = this.initPosition;
+            transform.localRotation = this.initRotation;
         }
 
         private void Start()
