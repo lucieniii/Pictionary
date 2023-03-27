@@ -136,8 +136,8 @@ namespace DrawAndGuess.Draw
             var trail = currentDrawing.AddComponent<TrailRenderer>();
             trail.time = Mathf.Infinity;
             trail.material = drawingMaterial;
-            trail.startWidth = .05f;
-            trail.endWidth = .05f;
+            trail.startWidth = .02f;
+            trail.endWidth = .02f;
             trail.minVertexDistance = .02f;
 
             currentDrawing.transform.parent = nib.transform;
