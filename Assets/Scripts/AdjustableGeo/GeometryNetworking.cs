@@ -32,6 +32,8 @@ namespace DrawAndGuess.Draw
             GeometryNetworking newGeometry = GameObject.Instantiate(geometryCopy, parent);
             geometryContainer.AddGeometry(gameObject);
             newGeometry.SetNetworkIdAndColor(data.newId, data.newGeometryId, data.color);
+            Geometry geometry = GetComponentInChildren<Geometry>();
+            geometry.newGeometry = false;
             // Debug.Log("Copying.");
         }
 
@@ -57,8 +59,6 @@ namespace DrawAndGuess.Draw
             NetworkId newId = NetworkId.Unique(), newGeometryId = NetworkId.Unique();
             newGeometry.SetNetworkIdAndColor(newId, newGeometryId, color);
             context.SendJson(new Message(newId, newGeometryId, color));
-            Geometry geometry = GetComponentInChildren<Geometry>();
-            geometry.newGeometry = false;
             // Debug.Log("Copying.");
         }
     }
