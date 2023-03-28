@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -852,7 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: {fileID: 128940859}
-  titlePanel: {fileID: 0}
+  titlePanel: {fileID: 128940859}
 --- !u!65 &75158234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12708,7 +12708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: {fileID: 974191615}
-  titlePanel: {fileID: 0}
+  titlePanel: {fileID: 974191615}
 --- !u!65 &913182185
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15405,7 +15405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: {fileID: 493391795}
-  titlePanel: {fileID: 0}
+  titlePanel: {fileID: 493391795}
 --- !u!65 &1105753906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -89673,7 +89673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: {fileID: 6297897804512771765}
-  titlePanel: {fileID: 0}
+  titlePanel: {fileID: 6297897804512771765}
 --- !u!114 &6297897804512771752
 MonoBehaviour:
   m_ObjectHideFlags: 0
