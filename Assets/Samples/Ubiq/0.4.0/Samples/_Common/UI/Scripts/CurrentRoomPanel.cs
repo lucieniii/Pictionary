@@ -9,7 +9,7 @@ namespace Ubiq.Samples
     public class CurrentRoomPanel : MonoBehaviour
     {
         public SocialMenu mainMenu;
-        public GameObject notInRoomPanel;
+        // public GameObject notInRoomPanel;
         public GameObject inRoomPanel;
         public CurrentRoomPanelControl control;
         public Image background;
@@ -57,7 +57,7 @@ namespace Ubiq.Samples
 
             if (mainMenu.roomClient.JoinedRoom)
             {
-                notInRoomPanel.SetActive(false);
+                // notInRoomPanel.SetActive(false);
                 inRoomPanel.SetActive(true);
                 control.Bind(mainMenu.roomClient);
 
@@ -68,7 +68,7 @@ namespace Ubiq.Samples
             }
             else
             {
-                notInRoomPanel.SetActive(true);
+                // notInRoomPanel.SetActive(true);
                 inRoomPanel.SetActive(false);
             }
         }

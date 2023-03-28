@@ -5,6 +5,8 @@ namespace Ubiq.Samples
     public class PanelSwitcher : MonoBehaviour
     {
         public GameObject defaultPanel;
+        public GameObject titlePanel;
+
 
         private GameObject currentPanel;
 
@@ -13,7 +15,7 @@ namespace Ubiq.Samples
         {
             if (!currentPanel)
             {
-                currentPanel = defaultPanel;
+                currentPanel = titlePanel;
             }
 
             if (currentPanel != newPanel)

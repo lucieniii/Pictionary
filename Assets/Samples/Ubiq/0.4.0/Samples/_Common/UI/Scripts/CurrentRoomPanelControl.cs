@@ -11,7 +11,7 @@ namespace Ubiq.Samples
     public class CurrentRoomPanelControl : MonoBehaviour
     {
         public Text Joincode;
-        public RawImage ScenePreview;
+        // public RawImage ScenePreview;
 
         private string existing;
 
@@ -19,11 +19,11 @@ namespace Ubiq.Samples
         {
             Joincode.text = client.Room.JoinCode.ToUpperInvariant();
 
-            var sceneInfo = FindObjectOfType<SceneInfo>();
-            if (sceneInfo)
-            {
-                ScenePreview.texture = sceneInfo.screenshot;
-            }
+            // var sceneInfo = FindObjectOfType<SceneInfo>();
+            // if (sceneInfo)
+            // {
+            //     ScenePreview.texture = sceneInfo.screenshot;
+            // }
         }
     }
 }
