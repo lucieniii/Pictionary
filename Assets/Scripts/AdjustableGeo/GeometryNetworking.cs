@@ -48,7 +48,6 @@ namespace DrawAndGuess.Draw
             geometry.context.Id = newGeometryId;
             geometryColor.newestGeometry = geometry;
             geometry.GetComponent<MeshRenderer>().material.color = color;
-            geometry.newGeometry = false;
         }
 
         public void CopySelf(Color color)
@@ -58,6 +57,8 @@ namespace DrawAndGuess.Draw
             NetworkId newId = NetworkId.Unique(), newGeometryId = NetworkId.Unique();
             newGeometry.SetNetworkIdAndColor(newId, newGeometryId, color);
             context.SendJson(new Message(newId, newGeometryId, color));
+            Geometry geometry = GetComponentInChildren<Geometry>();
+            geometry.newGeometry = false;
             // Debug.Log("Copying.");
         }
     }
