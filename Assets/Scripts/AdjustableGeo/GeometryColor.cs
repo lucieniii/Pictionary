@@ -14,6 +14,8 @@ namespace DrawAndGuess.Draw
 
         public GameController gameController;
 
+        public Slider redSlider, greenSlider, blueSlider;
+
         private struct Message
         {
             public Color color;
@@ -36,21 +38,11 @@ namespace DrawAndGuess.Draw
             // Hide();
         }
 
-        public void ChangeRedChannel(Slider slider)
+        public void changeColor()
         {
-            newestGeometry.ChangeRedChannel(slider);
-            context.SendJson(new Message(newestGeometry.GetComponent<MeshRenderer>().material.color));
-        }
-
-        public void ChangeGreenChannel(Slider slider)
-        {
-            newestGeometry.ChangeGreenChannel(slider);
-            context.SendJson(new Message(newestGeometry.GetComponent<MeshRenderer>().material.color));
-        }
-
-        public void ChangeBlueChannel(Slider slider)
-        {
-            newestGeometry.ChangeBlueChannel(slider);
+            newestGeometry.ChangeRedChannel(redSlider);
+            newestGeometry.ChangeGreenChannel(greenSlider);
+            newestGeometry.ChangeBlueChannel(blueSlider);
             context.SendJson(new Message(newestGeometry.GetComponent<MeshRenderer>().material.color));
         }
 
