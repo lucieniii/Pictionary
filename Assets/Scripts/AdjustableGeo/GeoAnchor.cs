@@ -112,7 +112,10 @@ namespace DrawAndGuess.Draw
                 transform.position = follow.TransformPoint(localGrabPoint);
 
                 afterAnchorPos = transform.localPosition;
-                adjustGeoScale(afterAnchorPos - previousAnchorPos);
+                if (!geometry.newGeometry)
+                {
+                    adjustGeoScale(afterAnchorPos - previousAnchorPos);
+                }
 
                 // setPosition();
             }
@@ -120,7 +123,7 @@ namespace DrawAndGuess.Draw
 
         public void Grasp(Hand controller)
         {
-            if (gameController.CanUse())
+            if (!geometry.newGeometry && gameController.CanUse())
             {
                 var handTransform = controller.transform;
                 localGrabPoint = handTransform.InverseTransformPoint(transform.position); //transform.InverseTransformPoint(handTransform.position);

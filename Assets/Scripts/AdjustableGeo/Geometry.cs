@@ -21,7 +21,7 @@ namespace DrawAndGuess.Draw
         public GeoAnchor[] anchors;
         private int anchorNumber;
 
-        private bool newGeometry;
+        public bool newGeometry;
         public GeometryNetworking geometryCopy;
 
         public GameController gameController;
