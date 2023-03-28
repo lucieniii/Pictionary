@@ -39,7 +39,7 @@ namespace DrawAndGuess.Procedure
         public int[] changesInt;
         public string[] namesString;
 
-        public int roundDuration = 120;
+        public int roundDuration = 300;
 
         private int listLength;
 
@@ -78,7 +78,7 @@ namespace DrawAndGuess.Procedure
         private void Start()
         {
             this.listLength = 7;
-            this.roundDuration = 20;
+            this.roundDuration = 300;
         }
 
         public void initRankingBoard(int playerNumber, string[] playerNames)
