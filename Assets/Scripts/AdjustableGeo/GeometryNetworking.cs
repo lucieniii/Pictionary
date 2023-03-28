@@ -48,6 +48,7 @@ namespace DrawAndGuess.Draw
             geometry.context.Id = newGeometryId;
             geometryColor.newestGeometry = geometry;
             geometry.GetComponent<MeshRenderer>().material.color = color;
+            geometry.newGeometry = false;
         }
 
         public void CopySelf(Color color)
