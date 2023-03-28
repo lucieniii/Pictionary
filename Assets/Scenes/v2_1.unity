@@ -852,6 +852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: {fileID: 128940859}
+  titlePanel: {fileID: 0}
 --- !u!65 &75158234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12465,6 +12466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: {fileID: 974191615}
+  titlePanel: {fileID: 0}
 --- !u!65 &913182185
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15001,6 +15003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: {fileID: 493391795}
+  titlePanel: {fileID: 0}
 --- !u!65 &1105753906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44869,6 +44872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: {fileID: 1745931747680605522}
+  titlePanel: {fileID: 2624563546270516647}
 --- !u!224 &1745931747949109911
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47106,7 +47110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Joincode: {fileID: 1745931748790808462}
-  ScenePreview: {fileID: 0}
 --- !u!224 &1745931748818954710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47955,7 +47958,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 5836416738856476588}
-  notInRoomPanel: {fileID: 0}
   inRoomPanel: {fileID: 1745931748818954711}
   control: {fileID: 1745931748818954697}
   background: {fileID: 1745931749262607009}
@@ -88940,6 +88942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultPanel: {fileID: 6297897804512771765}
+  titlePanel: {fileID: 0}
 --- !u!114 &6297897804512771752
 MonoBehaviour:
   m_ObjectHideFlags: 0
