@@ -132,32 +132,6 @@ Game procedure:
 
 + End game: Calculate the total points and ranking, save the game (3)
 
-TBD:
-
-延迟半秒进rank
-
-积分系统rank **DONE**
-
-显示正确答案
-
-game入口切换到当前phase **DONE**
-
-美化UI (panel,button，clicksound) 
-button背景，Panel统一背景
-
-房间场景 **DONE**
-
-保存画作
-
-每轮round之后笔归位 **DONE**
-
-笔的owner唯一 **DONE**
-
-轮流artist **DONE**
-
-avatar 和场景的碰撞
-
-在room中才能进游戏
 
 ## Change the round duration
 
