@@ -479,5 +479,20 @@ namespace DrawAndGuess.Procedure
             }
             return false;
         }
+
+        public void PressLeaveButton()
+        {
+            previousGameStatus = GameStatus.GameStartPhase;
+            currentGameStatus = GameStatus.GameStartPhase;
+            this.isGameOwner = false;
+            this.roundDuration = 300.0f;
+            this.roundCounter = 0;
+            DeleteDrawings();
+            this.timeRemain = 300;
+            artistCountdown.fillAmount = 1;
+            guesserCountdown.fillAmount = 1;
+            artistCountdownText.text = "05:00";
+            guesserCountdownText.text = "05:00";
+        }
     }
 }
