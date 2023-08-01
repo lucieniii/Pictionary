@@ -1,5 +1,13 @@
-# UCL-VR-2022
-UCL Virtual Environment 2022
+# Draw & Guess Game On VR
+
+This is a Pictionary Game on VR. Players are encouraged to draw a specific word with pens and geometries to let other players guess out it.
+
++ Number of Players: 2-8
++ Communicate by speaking.
++ Has a leaderboard.
++ Support creative mode.
+
+From UCL Virtual Environment 2022
 
 ## Demo Video & Images
 
