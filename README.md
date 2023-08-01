@@ -1,6 +1,14 @@
 # UCL-VR-2022
 UCL Virtual Environment 2022
 
+## Demo Video & Images
+
+[Short Game Play Video](https://github.com/lucieniii/UCL-VR-2022/blob/main/Docs/GamePlay.mp4)
+
+[Demo Images](https://github.com/lucieniii/UCL-VR-2022/tree/main/Docs/recordings)
+
+[Documentation](https://github.com/lucieniii/UCL-VR-2022/blob/main/Docs/report.pdf)
+
 ## Git commit info.
 
 [new] new files
